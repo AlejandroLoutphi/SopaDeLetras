@@ -26,10 +26,13 @@ public class AdjacencyMatrixGraph<E> {
         linkAToB(b, a);
     }
 
-    public AdjacencyMatrixGraph(E[] elts) {
+    public AdjacencyMatrixGraph(E[] elts, int sideLen) {
         this.elts = elts;
-        int sideLen = this.elts.length;
-        int square = sideLen * sideLen;
+        int square = this.elts.length;
+        this.adjacencyMatrix = new boolean[square][square];
+        int sideLenM1 = sideLen - 1;
+        int sideLenP1 = sideLen + 1;
+        assert(square == (sideLen * sideLen));
         for (int i = 0; i < square; i++) {
             if (i % sideLen != 0) {
                 this.linkAAndB(i, i - 1);
@@ -38,7 +41,10 @@ public class AdjacencyMatrixGraph<E> {
                 this.linkAAndB(i, i - sideLen);
             }
             if ((i % sideLen != 0) && (i / sideLen != 0)) {
-                this.linkAAndB(i, i - sideLen - 1);
+                this.linkAAndB(i, i - sideLenP1);
+            }
+            if ((i % sideLen != 0) && (i / sideLen != sideLenM1)) {
+                this.linkAAndB(i, i + sideLenM1);
             }
         }
     }
