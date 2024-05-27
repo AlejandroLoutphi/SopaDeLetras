@@ -4,6 +4,8 @@
  */
 package interface3;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import javax.swing.JFileChooser;
 import java.io.File;
 import javax.swing.JOptionPane;
@@ -57,7 +59,10 @@ public class MainFrame3 extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         FindWordButton = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
+        DictionaryField = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        SaveButton = new javax.swing.JButton();
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,87 +87,134 @@ public class MainFrame3 extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BFS", "DFS", " " }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel1.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel1.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel1.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 50, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 50, 40));
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel2.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel2.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel2.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 50, 40));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 50, 40));
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel3.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel3.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel3.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 50, 40));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 50, 40));
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel4.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel4.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel4.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 50, 40));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 50, 40));
 
-        jLabel5.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel5.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel5.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 255)));
         jLabel5.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel5.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 50, 40));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 50, 40));
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel6.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel6.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel6.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 50, 40));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 50, 40));
 
+        jLabel7.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel7.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel7.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel7.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 50, 40));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 50, 40));
 
+        jLabel8.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel8.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel8.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel8.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 50, 40));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 50, 40));
 
+        jLabel9.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel9.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel9.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel9.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 50, 40));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 50, 40));
 
+        jLabel10.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel10.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel10.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel10.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel10.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 50, 40));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 50, 40));
 
+        jLabel11.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel11.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel11.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel11.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel11.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 50, 40));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 50, 40));
 
+        jLabel12.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel12.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel12.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel12.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel12.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 50, 40));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 50, 40));
 
+        jLabel13.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel13.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel13.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel13.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel13.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 50, 40));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 50, 40));
 
+        jLabel14.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel14.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel14.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel14.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel14.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 50, 40));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 50, 40));
 
+        jLabel15.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel15.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel15.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel15.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel15.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 50, 40));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 50, 40));
 
+        jLabel16.setBackground(new java.awt.Color(255, 255, 153));
+        jLabel16.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel16.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         jLabel16.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel16.setMinimumSize(new java.awt.Dimension(44, 44));
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 50, 40));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 50, 40));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 120, -1));
 
         FindWordButton.setText("Buscar Palabra");
         FindWordButton.addActionListener(new java.awt.event.ActionListener() {
@@ -170,10 +222,28 @@ public class MainFrame3 extends javax.swing.JFrame {
                 FindWordButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(FindWordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, -1, -1));
+        getContentPane().add(FindWordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, -1, -1));
 
-        jLabel17.setText("Introduce la Palabra para buscar: ");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        DictionaryField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DictionaryFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DictionaryField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 200, 150));
+
+        jLabel18.setText("Diccionario:");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
+
+        jLabel19.setText("Introduce la Palabra para buscar: ");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        SaveButton.setText("Guardar");
+        SaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -189,7 +259,8 @@ public class MainFrame3 extends javax.swing.JFrame {
         }
         try {
             JOptionPane.showMessageDialog(this,"Archivo escojido:"+ selectedFile.getAbsolutePath(),"Archivo Cargado",JOptionPane.INFORMATION_MESSAGE);
-            readFile(selectedFile);
+        List<String> dictionaryWords = readFile(selectedFile);
+            displayDictionaryWords(dictionaryWords);
         } catch(Exception e) {
            e.printStackTrace();
            JOptionPane.showMessageDialog(this,"Error" +e.getMessage(),"Error de Archivo",JOptionPane.ERROR_MESSAGE);
@@ -204,18 +275,90 @@ public class MainFrame3 extends javax.swing.JFrame {
 
     private void FindWordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FindWordButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FindWordButtonActionPerformed
+        String wordToSearch = jTextField1.getText().trim();
+        
+        if (wordToSearch.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a word to search.");
+            return;
+        }
 
-    private void readFile(File file) {
+        // Get all JLabels in the grid (assuming 4x4 grid)
+        JLabel[][] grid = {
+            {jLabel1, jLabel2, jLabel3, jLabel4},
+            {jLabel5, jLabel6, jLabel7, jLabel8},
+            {jLabel9, jLabel10, jLabel11, jLabel12},
+            {jLabel13, jLabel14, jLabel15, jLabel16}
+        };
+
+        boolean found = false;
+
+        // Search for the word in the grid
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                // Reset background color
+                grid[i][j].setOpaque(true);
+                grid[i][j].setBackground(null);
+
+                if (grid[i][j].getText().equalsIgnoreCase(wordToSearch)) {
+                    grid[i][j].setBackground(java.awt.Color.YELLOW);
+                    found = true;
+                }
+            }
+        }
+
+        if (!found) {
+            JOptionPane.showMessageDialog(this, "Palabra no Encontrada.");
+        }
+        
+                                                  
+
+    }//GEN-LAST:event_FindWordButtonActionPerformed
+private void displayDictionaryWords(List<String> dictionaryWords) {
+    StringBuilder sb = new StringBuilder();
+    int counter=1;
+    for (String word : dictionaryWords) {
+        sb.append(counter).append(". ").append(word).append(System.lineSeparator()); 
+        counter++;
+    }
+    
+    DictionaryField.setText(sb.toString()); // Set the concatenated string as the text of the text field
+}
+    private void DictionaryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DictionaryFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DictionaryFieldActionPerformed
+
+    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Guardar archivo de diccionario");
+    int userSelection = fileChooser.showSaveDialog(this);
+    
+    if (userSelection == JFileChooser.APPROVE_OPTION) {
+        File fileToSave = fileChooser.getSelectedFile();
+        saveDictionaryToFile(fileToSave);
+    }
+}
+
+private void saveDictionaryToFile(File file) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+        writer.write(DictionaryField.getText());
+        JOptionPane.showMessageDialog(this, "Diccionario guardado con éxito.");
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error al guardar el diccionario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+}
+
+    }//GEN-LAST:event_SaveButtonActionPerformed
+
+    private List<String> readFile(File file) {
+    List<String> dictionaryWords = new ArrayList<>(); // Initialize the list outside the try block
     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
         String line;
         boolean readingBoard = false; // Flag to indicate whether reading the board letters or dictionary words
         List<String> boardLines = new ArrayList<>(); // Store lines containing board letters
-        List<String> dictionaryWords = new ArrayList<>(); // Store dictionary words
 
         while ((line = br.readLine()) != null) {
             // Check if the line contains board letters
-            System.out.println("Reading line: " + line);
+            System.out.println("LINE: " + line);
             if (line.startsWith("tab")) {
                 readingBoard = true; // Set flag to true to start reading board letters
             } else if (line.startsWith("/tab")) {
@@ -240,19 +383,21 @@ public class MainFrame3 extends javax.swing.JFrame {
         // Now, you have boardLines containing the board letters and dictionaryWords containing the dictionary words
         // Process boardLines and dictionaryWords as needed for your game
         // For example, you can print them to verify they were read correctly
-        System.out.println("Board Letters:");
+        System.out.println("Letras de Grid");
         for (String boardLine : boardLines) {
             System.out.println(boardLine);
         }
-        System.out.println("Dictionary Words:");
+        System.out.println("Palabras de Diccionario");
         for (String word : dictionaryWords) {
             System.out.println(word);
         }
     } catch (IOException e) {
         e.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error reading file: " + e.getMessage(), "File Read Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Error Leyendo Archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
-   }
+    return dictionaryWords; 
+}
+    
 private void populateBoard(List<String> boardLines) {
     // Assuming JLabel components are named jLabel1, jLabel2, ..., jLabel16
     JLabel[] labels = {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9, jLabel10, jLabel11, jLabel12, jLabel13, jLabel14, jLabel15, jLabel16};
@@ -263,9 +408,11 @@ private void populateBoard(List<String> boardLines) {
         for (int i = 0; i < boardLine.length(); i++) {
             labels[index].setText(String.valueOf(boardLine.charAt(i)));
             index++;
-        }
+  }
     }
 }
+
+
 
     /**
      * @param args the command line arguments
@@ -320,8 +467,10 @@ private void populateBoard(List<String> boardLines) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField DictionaryField;
     private javax.swing.JButton FindWordButton;
     private javax.swing.JButton LoadButton;
+    private javax.swing.JButton SaveButton;
     private javax.swing.JLabel TimeLabel;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -332,7 +481,8 @@ private void populateBoard(List<String> boardLines) {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
