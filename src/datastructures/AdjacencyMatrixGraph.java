@@ -106,4 +106,76 @@ public class AdjacencyMatrixGraph<E> {
         }
         return false;
     }
+
+private boolean dfsUtil(int current, boolean[] visited, String word, int index) {
+        if (index == word.length()) {
+            return true; // All characters matched
+        }
+
+        visited[current] = true;
+
+        for (int i = 0; i < elts.length; i++) {
+            if (adjacencyMatrix[current][i] && !visited[i] && elts[i].equals(word.charAt(index))) {
+                if (dfsUtil(i, visited, word, index + 1)) {
+                    return true;
+                }
+            }
+        }
+
+        visited[current] = false; // Backtrack
+        return false;
+    }
+
+    // Main DFS word search method
+    public boolean searchWordDFS(String word) {
+        if (word == null || word.isEmpty()) {
+            return false;
+        }
+
+        for (int i = 0; i < elts.length; i++) {
+            if (elts[i].equals(word.charAt(0))) {
+                boolean[] visited = new boolean[elts.length];
+                if (dfsUtil(i, visited, word, 1)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    // BFS word search method
+    public boolean searchWordBFS(String word) {
+        if (word == null || word.isEmpty()) {
+            return false;
+        }
+
+        for (int start = 0; start < elts.length; start++) {
+            if (elts[start].equals(word.charAt(0))) {
+                boolean[] visited = new boolean[elts.length];
+                Queue<int[]> queue = new LinkedList<>();
+                queue.add(new int[]{start, 1});
+                visited[start] = true;
+
+                while (!queue.isEmpty()) {
+                    int[] current = queue.poll();
+                    int vertex = current[0];
+                    int index = current[1];
+
+                    if (index == word.length()) {
+                        return true; // All characters matched
+                    }
+
+                    for (int i = 0; i < elts.length; i++) {
+                        if (adjacencyMatrix[vertex][i] && !visited[i] && elts[i].equals(word.charAt(index))) {
+                            visited[i] = true;
+                            queue.add(new int[]{i, index + 1});
+                        }
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
 }
