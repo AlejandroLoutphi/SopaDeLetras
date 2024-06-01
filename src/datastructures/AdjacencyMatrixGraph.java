@@ -8,6 +8,7 @@ package datastructures;
  * Graph class.
  * Elements (vertices) are immutable.
  * Implemented using an adjacency matrix.
+ * 
  * @author Alejandro Loutphi
  */
 public class AdjacencyMatrixGraph<E> {
@@ -17,6 +18,7 @@ public class AdjacencyMatrixGraph<E> {
 
     /**
      * Construct graph with the elements in the input array and no edges.
+     * 
      * @param elts array of elements to be contained in the graph vertices
      */
     public AdjacencyMatrixGraph(E[] elts) {
@@ -27,6 +29,7 @@ public class AdjacencyMatrixGraph<E> {
 
     /**
      * Returns the element of the nth graph vertex.
+     * 
      * @param n index of the vertex to return the element from
      * @return element housed in nth vertex
      */
@@ -36,6 +39,7 @@ public class AdjacencyMatrixGraph<E> {
 
     /**
      * Connects the vertex with index a to the vertex with index b unidirectionally.
+     * 
      * @param a vertex index
      * @param b vertex index
      */
@@ -45,6 +49,7 @@ public class AdjacencyMatrixGraph<E> {
 
     /**
      * Connects the vertex with index a to the vertex with index b bidirectionally.
+     * 
      * @param a vertex index
      * @param b vertex index
      */
@@ -56,9 +61,12 @@ public class AdjacencyMatrixGraph<E> {
     /**
      * Construct graph with the elements in the input array.
      * The vertices are connected as if they were in a square.
-     * Each vertex connects to the elements vertically, horizontally, and diagonally adjacent to itself inside the square.
-     * @param elts array of elements to be contained in the graph vertices
-     * @param sideLen side length of the square the graph is simulating. Must be equal to the square root of elts.length
+     * Each vertex connects to the elements vertically, horizontally, and diagonally
+     * adjacent to itself inside the square.
+     * 
+     * @param elts    array of elements to be contained in the graph vertices
+     * @param sideLen side length of the square the graph is simulating. Must be
+     *                equal to the square root of elts.length
      */
     public AdjacencyMatrixGraph(E[] elts, int sideLen) {
         this.elts = elts;
@@ -66,7 +74,7 @@ public class AdjacencyMatrixGraph<E> {
         this.adjacencyMatrix = new boolean[eltsLen][eltsLen];
         int sideLenM1 = sideLen - 1;
         int sideLenP1 = sideLen + 1;
-        assert(eltsLen == (sideLen * sideLen));
+        assert (eltsLen == (sideLen * sideLen));
         for (int i = 0; i < eltsLen; i++) {
             if (i % sideLen != 0)
                 this.linkAAndB(i, i - 1);
@@ -81,6 +89,7 @@ public class AdjacencyMatrixGraph<E> {
 
     /**
      * Returns true if the graph is directed (not all edges are bidirectional).
+     * 
      * @return true if the graph is directed. Otherwise, false
      */
     public boolean isDirected() {
@@ -95,6 +104,7 @@ public class AdjacencyMatrixGraph<E> {
 
     /**
      * Returns true if there's an edge connecting i and j
+     * 
      * @param i Vertex index
      * @param j Vertex index
      * @return true if there's an edge connecting i and j
@@ -107,75 +117,76 @@ public class AdjacencyMatrixGraph<E> {
         return false;
     }
 
-private boolean dfsUtil(int current, boolean[] visited, String word, int index) {
-        if (index == word.length()) {
-            return true; // All characters matched
-        }
-
-        visited[current] = true;
-
-        for (int i = 0; i < elts.length; i++) {
-            if (adjacencyMatrix[current][i] && !visited[i] && elts[i].equals(word.charAt(index))) {
-                if (dfsUtil(i, visited, word, index + 1)) {
-                    return true;
-                }
+    private boolean depthFirstSearchStep(
+            E[] arr,
+            int index,
+            int entry,
+            boolean[] taken) {
+        if (index == arr.length)
+            return true;
+        taken[entry] = true;
+        for (int i = 0; i < this.elts.length; i++) {
+            if (!this.hasEdge(entry, i) || (this.get(i) != arr[index]) || taken[i]) {
+                continue;
+            }
+            if (depthFirstSearchStep(arr, index + 1, i, taken)) {
+                return true;
             }
         }
-
-        visited[current] = false; // Backtrack
+        taken[entry] = false;
         return false;
     }
 
-    // Main DFS word search method
-    public boolean searchWordDFS(String word) {
-        if (word == null || word.isEmpty()) {
-            return false;
-        }
-
-        for (int i = 0; i < elts.length; i++) {
-            if (elts[i].equals(word.charAt(0))) {
-                boolean[] visited = new boolean[elts.length];
-                if (dfsUtil(i, visited, word, 1)) {
-                    return true;
-                }
+    /**
+     * Traverses the graph to find a connected sequence of vertices that contain the elements of the array passed in.
+     * @param arr array of elements
+     * @return true if the vertex sequence was found. Otherwise, false
+     */
+    public boolean depthFirstSearchArray(E[] arr) {
+        boolean[] taken = new boolean[this.elts.length];
+        for (int i = 0; i < this.elts.length; i++) {
+            if (!this.get(i).equals(arr[0])) {
+                continue;
             }
+            if (depthFirstSearchStep(arr, 1, i, taken))
+                return true;
         }
-
         return false;
     }
 
-    // BFS word search method
-    public boolean searchWordBFS(String word) {
-        if (word == null || word.isEmpty()) {
-            return false;
-        }
+    // // BFS word search method
+    // public boolean searchWordBFS(String word) {
+    // if (word == null || word.isEmpty()) {
+    // return false;
+    // }
 
-        for (int start = 0; start < elts.length; start++) {
-            if (elts[start].equals(word.charAt(0))) {
-                boolean[] visited = new boolean[elts.length];
-                Queue<int[]> queue = new LinkedList<>();
-                queue.add(new int[]{start, 1});
-                visited[start] = true;
+    // for (int start = 0; start < elts.length; start++) {
+    // if (elts[start].equals(word.charAt(0))) {
+    // boolean[] visited = new boolean[elts.length];
+    // Queue<int[]> queue = new LinkedList<>();
+    // queue.add(new int[]{start, 1});
+    // visited[start] = true;
 
-                while (!queue.isEmpty()) {
-                    int[] current = queue.poll();
-                    int vertex = current[0];
-                    int index = current[1];
+    // while (!queue.isEmpty()) {
+    // int[] current = queue.poll();
+    // int vertex = current[0];
+    // int index = current[1];
 
-                    if (index == word.length()) {
-                        return true; // All characters matched
-                    }
+    // if (index == word.length()) {
+    // return true; // All characters matched
+    // }
 
-                    for (int i = 0; i < elts.length; i++) {
-                        if (adjacencyMatrix[vertex][i] && !visited[i] && elts[i].equals(word.charAt(index))) {
-                            visited[i] = true;
-                            queue.add(new int[]{i, index + 1});
-                        }
-                    }
-                }
-            }
-        }
+    // for (int i = 0; i < elts.length; i++) {
+    // if (adjacencyMatrix[vertex][i] && !visited[i] &&
+    // elts[i].equals(word.charAt(index))) {
+    // visited[i] = true;
+    // queue.add(new int[]{i, index + 1});
+    // }
+    // }
+    // }
+    // }
+    // }
 
-        return false;
-    }
+    // return false;
+    // }
 }

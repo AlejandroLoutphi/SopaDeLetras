@@ -69,6 +69,14 @@ public class IntStack {
     }
 
     /**
+     * Empties the entire stack.
+     */
+    public void empty() {
+        this.stack = new int[this.capacity];
+        this.top = 0;
+    }
+
+    /**
      * Pushes an int element to the top of the stack.
      * @param elt int to push
      * @return false if the element could not be pushed. Otherwise, true
