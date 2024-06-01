@@ -14,10 +14,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JLabel;
+import static javax.swing.SwingConstants.CENTER;
 
 /**
  *
- * @author ayahzaheraldeen
+ * @author ayahzaheraldeen, Alejandro Loutphi
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -26,6 +27,23 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        this.DictionaryTextArea.setEditable(false);
+        jLabel1.setHorizontalAlignment(CENTER);
+        jLabel2.setHorizontalAlignment(CENTER);
+        jLabel3.setHorizontalAlignment(CENTER);
+        jLabel4.setHorizontalAlignment(CENTER);
+        jLabel5.setHorizontalAlignment(CENTER);
+        jLabel6.setHorizontalAlignment(CENTER);
+        jLabel7.setHorizontalAlignment(CENTER);
+        jLabel8.setHorizontalAlignment(CENTER);
+        jLabel9.setHorizontalAlignment(CENTER);
+        jLabel10.setHorizontalAlignment(CENTER);
+        jLabel11.setHorizontalAlignment(CENTER);
+        jLabel12.setHorizontalAlignment(CENTER);
+        jLabel13.setHorizontalAlignment(CENTER);
+        jLabel14.setHorizontalAlignment(CENTER);
+        jLabel15.setHorizontalAlignment(CENTER);
+        jLabel16.setHorizontalAlignment(CENTER);
     }
 
     /**
@@ -38,9 +56,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextField2 = new javax.swing.JTextField();
-        LoadButton = new javax.swing.JButton();
-        TimeLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -57,12 +72,17 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        FindWordButton = new javax.swing.JButton();
-        DictionaryField = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        DictionaryTextArea = new javax.swing.JTextArea();
         SaveButton = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        TimeLabel = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        LoadButton = new javax.swing.JButton();
+        FindWordButton = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,20 +92,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        LoadButton.setText("Cargar Archivo");
-        LoadButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoadButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(LoadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
-
-        TimeLabel.setText("Time: 0ms");
-        getContentPane().add(TimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 90, 20));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BFS", "DFS", " " }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 153));
         jLabel1.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -214,28 +220,17 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel16.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel16.setMinimumSize(new java.awt.Dimension(44, 44));
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 50, 40));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 120, -1));
-
-        FindWordButton.setText("Buscar Palabra");
-        FindWordButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FindWordButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(FindWordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, -1, -1));
-
-        DictionaryField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DictionaryFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(DictionaryField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 200, 150));
-
-        jLabel18.setText("Diccionario:");
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
 
         jLabel19.setText("Introduce la Palabra para buscar: ");
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        DictionaryTextArea.setColumns(16);
+        DictionaryTextArea.setRows(5);
+        jScrollPane1.setViewportView(DictionaryTextArea);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 210, 150));
 
         SaveButton.setText("Guardar");
         SaveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -243,7 +238,35 @@ public class MainFrame extends javax.swing.JFrame {
                 SaveButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
+        jPanel1.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 120, -1));
+
+        TimeLabel.setText("Time: 0ms");
+        jPanel1.add(TimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 90, 20));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BFS", "DFS", " " }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+
+        LoadButton.setText("Cargar Archivo");
+        LoadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoadButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(LoadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        FindWordButton.setText("Buscar Palabra");
+        FindWordButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FindWordButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(FindWordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
+
+        jLabel18.setText("Diccionario:");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -321,12 +344,8 @@ private void displayDictionaryWords(List<String> dictionaryWords) {
         counter++;
     }
     
-    DictionaryField.setText(sb.toString()); // Set the concatenated string as the text of the text field
+    DictionaryTextArea.setText(sb.toString()); // Set the concatenated string as the text of the text field
 }
-    private void DictionaryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DictionaryFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DictionaryFieldActionPerformed
-
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // TODO add your handling code here:
         JFileChooser fileChooser = new JFileChooser();
@@ -341,7 +360,7 @@ private void displayDictionaryWords(List<String> dictionaryWords) {
 
 private void saveDictionaryToFile(File file) {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-        writer.write(DictionaryField.getText());
+        writer.write(DictionaryTextArea.getText());
         JOptionPane.showMessageDialog(this, "Diccionario guardado con éxito.");
     } catch (IOException e) {
         JOptionPane.showMessageDialog(this, "Error al guardar el diccionario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -442,7 +461,8 @@ private void populateBoard(List<String> boardLines) {
         //</editor-fold>
         try {
         for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
+            System.out.println(info.getName());
+            if ("Metal".equals(info.getName())) {
                 javax.swing.UIManager.setLookAndFeel(info.getClassName());
                 break;
             }
@@ -467,7 +487,7 @@ private void populateBoard(List<String> boardLines) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField DictionaryField;
+    private javax.swing.JTextArea DictionaryTextArea;
     private javax.swing.JButton FindWordButton;
     private javax.swing.JButton LoadButton;
     private javax.swing.JButton SaveButton;
@@ -491,6 +511,8 @@ private void populateBoard(List<String> boardLines) {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

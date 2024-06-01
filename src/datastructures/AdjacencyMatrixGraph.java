@@ -138,7 +138,7 @@ public class AdjacencyMatrixGraph<E> {
     }
 
     /**
-     * Traverses the graph to find a connected sequece of vertices that contain the elements of the array passed in.
+     * Traverses the graph to find a connected sequence of vertices that contain the elements of the array passed in.
      * @param arr array of elements
      * @return true if the vertex sequence was found. Otherwise, false
      */
