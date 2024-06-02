@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package queueclass;
+package datastructures;
 
 
 
@@ -10,9 +10,9 @@ package queueclass;
  *
  * @author ayahzaheraldeen
  */
-public class NodeQueue {
-    private Node front;
-    private Node end;
+public class NodeQueue<E> {
+    private LinkedListNode<E> front;
+    private LinkedListNode<E> end;
     private int size;
 
     public NodeQueue() {
@@ -21,7 +21,7 @@ public class NodeQueue {
         size = 0;
     }
 
-    public void enqueue(Node node) {
+    public void enqueue(LinkedListNode<E> node) {
         if (isEmpty()) {
             front = node;
         } else {
@@ -31,11 +31,11 @@ public class NodeQueue {
         size++;
     }
 
-    public Node dequeue() {
+    public LinkedListNode<E> dequeue() {
         if (isEmpty()) {
-            throw new IllegalStateException("Queue is empty");
+            return null;
         }
-        Node removedNode = front;
+        LinkedListNode<E> removedNode = front;
         front = front.getNext();
         if (front == null) {
             end = null;
@@ -50,5 +50,21 @@ public class NodeQueue {
 
     public int size() {
         return size;
+    }
+
+    public LinkedListNode<E> getFront() {
+        return front;
+    }
+
+    public void setFront(LinkedListNode<E> front) {
+        this.front = front;
+    }
+
+    public LinkedListNode<E> getEnd() {
+        return end;
+    }
+
+    public void setEnd(LinkedListNode<E> end) {
+        this.end = end;
     }
 }
