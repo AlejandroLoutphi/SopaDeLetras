@@ -8,7 +8,7 @@ package datastructures;
  * Node for linked lists.
  * @param <E> type of element stored in the node
  */
-class LinkedListNode<E> {
+public class LinkedListNode<E> {
 
     protected E elt;
     protected LinkedListNode<E> next;
