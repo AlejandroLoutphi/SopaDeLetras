@@ -264,40 +264,4 @@ public class AdjacencyMatrixGraph<E> {
         }
         return false;
     }
-
-    // // BFS word search method
-    // public boolean searchWordBFS(String word) {
-    // if (word == null || word.isEmpty()) {
-    // return false;
-    // }
-
-    // for (int start = 0; start < elts.length; start++) {
-    // if (elts[start].equals(word.charAt(0))) {
-    // boolean[] visited = new boolean[elts.length];
-    // Queue<int[]> queue = new LinkedList<>();
-    // queue.add(new int[]{start, 1});
-    // visited[start] = true;
-
-    // while (!queue.isEmpty()) {
-    // int[] current = queue.poll();
-    // int vertex = current[0];
-    // int index = current[1];
-
-    // if (index == word.length()) {
-    // return true; // All characters matched
-    // }
-
-    // for (int i = 0; i < elts.length; i++) {
-    // if (adjacencyMatrix[vertex][i] && !visited[i] &&
-    // elts[i].equals(word.charAt(index))) {
-    // visited[i] = true;
-    // queue.add(new int[]{i, index + 1});
-    // }
-    // }
-    // }
-    // }
-    // }
-
-    // return false;
-    // }
 }
