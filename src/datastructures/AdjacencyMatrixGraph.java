@@ -153,6 +153,69 @@ public class AdjacencyMatrixGraph<E> {
         }
         return false;
     }
+    
+    private boolean[] taken;
+private E[] searchArray;
+
+/**
+ * Performs a single step of BFS to find the next element in the array.
+ * 
+ * @param index the current index in the array
+ * @return true if the sequence is found, otherwise false
+ */
+private boolean breadthFirstSearchStep(int index) {
+    if (index == searchArray.length) {
+        return true;
+    }
+
+    for (int current = 0; current < this.elts.length; current++) {
+        if (taken[current]) {
+            continue;
+        }
+
+        taken[current] = true;
+
+        for (int i = 0; i < this.elts.length; i++) {
+            if (!this.hasEdge(current, i) || !this.get(i).equals(searchArray[index]) || taken[i]) {
+                continue;
+            }
+
+            if (breadthFirstSearchStep(index + 1)) {
+                return true;
+            }
+        }
+
+        taken[current] = false;
+    }
+
+    return false;
+}
+
+/**
+ * Traverses the graph to find a connected sequence of vertices that contain
+ * the elements of the array passed in using BFS.
+ * 
+ * @param arr array of elements
+ * @return true if the vertex sequence was found, otherwise false
+ */
+public boolean breadthFirstSearchArray(E[] arr) {
+    this.taken = new boolean[this.elts.length];
+    this.searchArray = arr;
+
+    for (int i = 0; i < this.elts.length; i++) {
+        if (!this.get(i).equals(arr[0])) {
+            continue;
+        }
+
+        taken[i] = true;
+        if (breadthFirstSearchStep(1)) {
+            return true;
+        }
+        taken[i] = false;
+    }
+    return false;
+}
+    
 
     // // BFS word search method
     // public boolean searchWordBFS(String word) {
