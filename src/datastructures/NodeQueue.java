@@ -31,6 +31,10 @@ public class NodeQueue<E> {
         size++;
     }
 
+    public void enqueue(E elt) {
+        this.enqueue(new LinkedListNode<>(elt, null));
+    }
+
     public LinkedListNode<E> dequeue() {
         if (isEmpty()) {
             return null;

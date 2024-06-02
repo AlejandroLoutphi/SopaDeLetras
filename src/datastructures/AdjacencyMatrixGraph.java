@@ -4,6 +4,36 @@
  */
 package datastructures;
 
+class BreadthFirstSearchQueueEntry {
+
+    private int entry;
+    private boolean[] taken;
+
+    public BreadthFirstSearchQueueEntry(
+            int entry,
+            boolean[] taken) {
+        this.entry = entry;
+        this.taken = taken;
+    }
+
+    public int getEntry() {
+        return entry;
+    }
+
+    public void setEntry(int entry) {
+        this.entry = entry;
+    }
+
+    public boolean[] getTaken() {
+        return taken;
+    }
+
+    public void setTaken(boolean[] taken) {
+        this.taken = taken;
+    }
+
+}
+
 /**
  * Graph class.
  * Elements (vertices) are immutable.
@@ -117,6 +147,19 @@ public class AdjacencyMatrixGraph<E> {
         return false;
     }
 
+    /**
+     * Traverses the graph from an entry point to find a connected sequence of
+     * vertices that contain the elements of the array passed in from an index
+     * onward using a depth-first search (DFS).
+     *
+     * @param arr   array of elements
+     * @param index index that specifies the first element of the array to search
+     *              for
+     * @param entry graph vertex index; vertex from which to start the search
+     * @param taken mask that specifies which graph vertices are taken and therefore
+     *              can't be part of the sequence this function searches for
+     * @return true if the vertex sequence was found. Otherwise, false
+     */
     private boolean depthFirstSearchStep(
             E[] arr,
             int index,
@@ -138,7 +181,9 @@ public class AdjacencyMatrixGraph<E> {
     }
 
     /**
-     * Traverses the graph to find a connected sequence of vertices that contain the elements of the array passed in.
+     * Traverses the graph to find a connected sequence of vertices that contain the
+     * elements of the array passed in using a depth-first search (BFS).
+     * 
      * @param arr array of elements
      * @return true if the vertex sequence was found. Otherwise, false
      */
@@ -149,6 +194,72 @@ public class AdjacencyMatrixGraph<E> {
                 continue;
             }
             if (depthFirstSearchStep(arr, 1, i, taken))
+                return true;
+        }
+        return false;
+    }
+
+    /**
+     * Traverses the graph to find a connected sequence of vertices that contain the
+     * elements of the array passed in using a breadth-first search (BFS), starting
+     * from a specified vertex.
+     * 
+     * @param arr array of elements
+     * @param inputEntry graph vertex index specifying where the sequence begins
+     * @return true if the vertex sequence was found. Otherwise, false
+     */
+    private boolean breadthFirstSearchArrayFromEntry(
+            E[] arr,
+            int inputEntry) {
+        int entry;
+        boolean[] taken = new boolean[this.elts.length];
+        taken[inputEntry] = true;
+        boolean[] nextTaken;
+        NodeQueue<BreadthFirstSearchQueueEntry> prevLayerQueue = new NodeQueue<>();
+        NodeQueue<BreadthFirstSearchQueueEntry> nextLayerQueue = new NodeQueue<>();
+        BreadthFirstSearchQueueEntry queueEntry;
+
+        prevLayerQueue.enqueue(new BreadthFirstSearchQueueEntry(inputEntry, taken));
+
+        for (int j = 1; j < arr.length; j++) {
+            while (!prevLayerQueue.isEmpty()) {
+                queueEntry = prevLayerQueue.dequeue().getElt();
+                entry = queueEntry.getEntry();
+                taken = queueEntry.getTaken();
+
+                for (int k = 0; k < this.elts.length; k++) {
+                    if (!this.hasEdge(entry, k) || (this.get(k) != arr[j]) || taken[k]) {
+                        continue;
+                    }
+
+                    if (j == (arr.length - 1)) {
+                        return true;
+                    }
+
+                    nextTaken = taken.clone();
+                    nextTaken[k] = true;
+                    nextLayerQueue.enqueue(new BreadthFirstSearchQueueEntry(k, nextTaken));
+                }
+            }
+            prevLayerQueue = nextLayerQueue;
+            nextLayerQueue = new NodeQueue<>();
+        }
+
+        return false;
+    }
+
+    /**
+     * Traverses the graph to find a connected sequence of vertices that contain the
+     * elements of the array passed in using a breadth-first search (BFS).
+     * 
+     * @param arr array of elements
+     * @return true if the vertex sequence was found. Otherwise, false
+     */
+    public boolean breadthFirstSearchArray(E[] arr) {
+        for (int i = 0; i < this.elts.length; i++) {
+            if (!this.get(i).equals(arr[0]))
+                continue;
+            if (this.breadthFirstSearchArrayFromEntry(arr, i))
                 return true;
         }
         return false;
