@@ -92,15 +92,7 @@ public class Pruebas {
         System.out.println("Following words of dictionary are present");
         findWords(boggle);
         
-        Boolean test = false;
-        
-        System.out.println(visited[2][0]);
-        
-        String Prueba2 = "[0,0][1,1][2,2][1,2][2,1]";
-        
-        if (Prueba2.contains("[0,0]")){
-         System.out.println("Exito");
-    }
+
         
 
         // TODO code application logic here
