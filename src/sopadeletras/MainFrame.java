@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sopadeletras;
+import datastructures.LinkedList;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -282,7 +283,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
         try {
             JOptionPane.showMessageDialog(this,"Archivo escojido:"+ selectedFile.getAbsolutePath(),"Archivo Cargado",JOptionPane.INFORMATION_MESSAGE);
-        List<String> dictionaryWords = readFile(selectedFile);
+        LinkedList<String> dictionaryWords = readFile(selectedFile);
             displayDictionaryWords(dictionaryWords);
         } catch(Exception e) {
            e.printStackTrace();
@@ -336,12 +337,16 @@ public class MainFrame extends javax.swing.JFrame {
                                                   
 
     }//GEN-LAST:event_FindWordButtonActionPerformed
-private void displayDictionaryWords(List<String> dictionaryWords) {
+private void displayDictionaryWords(LinkedList<String>  dictionaryWords) throws Exception {
     StringBuilder sb = new StringBuilder();
     int counter=1;
-    for (String word : dictionaryWords) {
+    int count2 = 0;
+    
+    while (count2 < dictionaryWords.size() -1) {
+        String word = dictionaryWords.getStringIndex(count2);
         sb.append(counter).append(". ").append(word).append(System.lineSeparator()); 
         counter++;
+        count2 += 1;
     }
     
     DictionaryTextArea.setText(sb.toString()); // Set the concatenated string as the text of the text field
@@ -368,12 +373,13 @@ private void saveDictionaryToFile(File file) {
 
     }//GEN-LAST:event_SaveButtonActionPerformed
 
-    private List<String> readFile(File file) {
-    List<String> dictionaryWords = new ArrayList<>(); // Initialize the list outside the try block
+    private LinkedList<String> readFile(File file) throws Exception {
+        
+    LinkedList<String>  dictionaryWords = new LinkedList<String>(); // Initialize the list outside the try block
     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
         String line;
         boolean readingBoard = false; // Flag to indicate whether reading the board letters or dictionary words
-        List<String> boardLines = new ArrayList<>(); // Store lines containing board letters
+        LinkedList<String> boardLines = new LinkedList<String> (); // Store lines containing board letters
 
         while ((line = br.readLine()) != null) {
             // Check if the line contains board letters
@@ -403,12 +409,16 @@ private void saveDictionaryToFile(File file) {
         // Process boardLines and dictionaryWords as needed for your game
         // For example, you can print them to verify they were read correctly
         System.out.println("Letras de Grid");
-        for (String boardLine : boardLines) {
-            System.out.println(boardLine);
+        int count = 0;
+        while (count < boardLines.size() -1) {
+            System.out.println(boardLines.getStringIndex(count));
+            count += 1;
         }
         System.out.println("Palabras de Diccionario");
-        for (String word : dictionaryWords) {
-            System.out.println(word);
+        count = 0;
+        while (count < dictionaryWords.size() -1) {
+            System.out.println(dictionaryWords.getStringIndex(count));
+            count += 1;
         }
     } catch (IOException e) {
         e.printStackTrace();
@@ -417,14 +427,18 @@ private void saveDictionaryToFile(File file) {
     return dictionaryWords; 
 }
     
-private void populateBoard(List<String> boardLines) {
+private void populateBoard(LinkedList<String> boardLines) throws Exception {
     // Assuming JLabel components are named jLabel1, jLabel2, ..., jLabel16
     JLabel[] labels = {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9, jLabel10, jLabel11, jLabel12, jLabel13, jLabel14, jLabel15, jLabel16};
 
     // Populate the JLabel components with board letters
     int index = 0;
-    for (String boardLine : boardLines) {
-        for (int i = 0; i < boardLine.length(); i++) {
+    int count = 0;
+    
+    while (count <  boardLines.size() -1 ) {
+        String boardLine = boardLines.getStringIndex(count);
+        count +=1;
+    for (int i = 0; i < boardLine.length(); i++) {
             labels[index].setText(String.valueOf(boardLine.charAt(i)));
             index++;
   }
