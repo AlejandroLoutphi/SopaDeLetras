@@ -202,4 +202,25 @@ public class LinkedList<E> {
             return false;
         return this.getHead().setAsEnd(n, elt);
     }
+    //Method for getting an element in a specific index.
+        public  String getStringIndex( int index) throws Exception {
+    // WORK HERE
+        LinkedListNode<E> pointer = getHead();
+        int count = 0;
+        while (pointer != null) {
+           String prueba = (String) pointer.getElt();
+  //          System.out.println("[ "+prueba + " ]");
+            pointer = pointer.getNext();;
+            if(count == index){
+                return prueba;
+            }
+            else{
+
+            }
+          count +=1;
+            
+        }
+        return "";
+    
+  }
 }
