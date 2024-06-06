@@ -91,7 +91,8 @@ public class MainFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTextField2 = new javax.swing.JTextField();
@@ -402,7 +403,8 @@ public class MainFrame extends javax.swing.JFrame {
             String word = "";
             try {
                 word = dictionaryWords.getStringIndex(count2);
-            } catch (Exception e) {}
+            } catch (Exception e) {
+            }
             sb.append(counter).append(". ").append(word).append(System.lineSeparator());
             counter++;
 
@@ -552,66 +554,63 @@ public class MainFrame extends javax.swing.JFrame {
 
     }
 
-    private LinkedList<String> readFile(File file) throws Exception {
+    private List<String> readFile(File file) {
+        List<String> dictionaryWords = new ArrayList<>();
+        List<String> boardLines = new ArrayList<>();
+        boolean readingBoard = false;
+        boolean readingDictionary = false;
 
-        LinkedList<String> dictionaryWords = new LinkedList<String>(); // Initialize the list outside the try block
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
-            boolean readingBoard = false; // Flag to indicate whether reading the board letters or dictionary words
-            LinkedList<String> boardLines = new LinkedList<String>(); // Store lines containing board letters
-            // Store lines containing board letters
 
             while ((line = br.readLine()) != null) {
-                // Check if the line contains board letters
-                System.out.println("LINEA: " + line);
-                if (line.startsWith("tab")) {
-                    readingBoard = true; // Set flag to true to start reading board letters
-                } else if (line.startsWith("/tab")) {
-                    readingBoard = false; // Set flag to false to stop reading board letters
-                } else if (line.startsWith("dic")) {
-                    readingBoard = false; // Set flag to false to stop reading board letters and start reading
-                                          // dictionary words
-                } else if (line.startsWith("/dic")) {
-                    // End of dictionary words
-                    break;
-                } else {
-                    line = line.replaceAll(",", "");
-                    // Add line to boardLines if reading board letters, else add to dictionaryWords
-                    // with numbering
-                    if (readingBoard) {
-                        boardLines.add(line.trim());
-                    } else {
-                        // Exclude lines starting with a number and a dot (indicating numbering)
-                        if (!line.matches("^\\d+\\..*")) {
-                            dictionaryWords.add(line.trim().toUpperCase()); // Convert to uppercase as words do not
-                                                                            // carry accents
-                        }
+                // Remove commas and trim line
+                line = line.replaceAll(",", "").trim();
+
+                if (line.equals("tab")) {
+                    readingBoard = true;
+                    readingDictionary = false;
+                    continue;
+                } else if (line.equals("/tab")) {
+                    readingBoard = false;
+                    continue;
+                } else if (line.equals("dic")) {
+                    readingBoard = false;
+                    readingDictionary = true;
+                    continue;
+                } else if (line.equals("/dic")) {
+                    readingDictionary = false;
+                    continue;
+                }
+
+                if (readingBoard) {
+                    boardLines.add(line);
+                } else if (readingDictionary) {
+                    if (!line.matches("^\\d+\\..*")) {
+                        dictionaryWords.add(line.toUpperCase());
                     }
                 }
             }
+
             populateBoard(boardLines);
 
             // Now, you have boardLines containing the board letters and dictionaryWords
             // containing the dictionary words
             // Process boardLines and dictionaryWords as needed for your game
-            // For example, you can print them to verify they were read correctly
             System.out.println("Letras de Grid");
-            int count = 0;
-            while (count < boardLines.size() - 1) {
-                System.out.println(boardLines.getStringIndex(count));
-                count += 1;
+            for (String boardLine : boardLines) {
+                System.out.println(boardLine);
             }
             System.out.println("Palabras de Diccionario");
-            count = 0;
-            while (count < dictionaryWords.size() - 1) {
-                System.out.println(dictionaryWords.getStringIndex(count));
-                count += 1;
+            for (String word : dictionaryWords) {
+                System.out.println(word);
             }
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error Leyendo Archivo: " + e.getMessage(), "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
+
         return dictionaryWords;
     }
 
@@ -622,9 +621,10 @@ public class MainFrame extends javax.swing.JFrame {
 
         while (count < boardLines.size() - 1) {
             String boardLine = "";
-            try{
+            try {
                 boardLine = boardLines.getStringIndex(count);
-            } catch (Exception e) {}
+            } catch (Exception e) {
+            }
             count += 1;
             for (int i = 0; i < boardLine.length(); i++) {
                 JLabel label = getLabelByIndex(index); // Get the corresponding JLabel
