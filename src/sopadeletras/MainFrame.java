@@ -90,7 +90,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTextField2 = new javax.swing.JTextField();
@@ -268,14 +268,6 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(DictionaryTextArea);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 210, 150));
-
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        DictionaryTextArea.setColumns(16);
-        DictionaryTextArea.setRows(5);
-        jScrollPane1.setViewportView(DictionaryTextArea);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 210, 150));
 
         SaveButton.setText("Guardar");
         SaveButton.addActionListener(new java.awt.event.ActionListener() {
