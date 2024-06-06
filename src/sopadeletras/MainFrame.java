@@ -91,7 +91,7 @@ public class MainFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTextField2 = new javax.swing.JTextField();
@@ -115,7 +115,7 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         DictionaryTextArea = new javax.swing.JTextArea();
         SaveButton = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        InputWord = new javax.swing.JTextField();
         TimeLabel = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         LoadButton = new javax.swing.JButton();
@@ -277,7 +277,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 120, -1));
+        jPanel1.add(InputWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 120, -1));
 
         TimeLabel.setBackground(new java.awt.Color(255, 102, 0));
         TimeLabel.setFont(new java.awt.Font("Bangla MN", 1, 20)); // NOI18N
@@ -360,7 +360,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void FindWordButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_FindWordButtonActionPerformed
         // TODO add your handling code here:
         String selectedAlgorithm = (String) jComboBox1.getSelectedItem();
-        String word = jTextField1.getText();
+        String word = InputWord.getText();
         char[] wordArray = word.toCharArray();
         Character[] wordCharacters = new Character[wordArray.length];
         for (int i = 0; i < wordArray.length; i++) {
@@ -399,7 +399,10 @@ public class MainFrame extends javax.swing.JFrame {
         int count2 = 0;
 
         while (count2 < dictionaryWords.size() - 1) {
-            String word = dictionaryWords.getStringIndex(count2);
+            String word = "";
+            try {
+                word = dictionaryWords.getStringIndex(count2);
+            } catch (Exception e) {}
             sb.append(counter).append(". ").append(word).append(System.lineSeparator());
             counter++;
 
@@ -618,7 +621,10 @@ public class MainFrame extends javax.swing.JFrame {
         int count = 0;
 
         while (count < boardLines.size() - 1) {
-            String boardLine = boardLines.getStringIndex(count);
+            String boardLine = "";
+            try{
+                boardLine = boardLines.getStringIndex(count);
+            } catch (Exception e) {}
             count += 1;
             for (int i = 0; i < boardLine.length(); i++) {
                 JLabel label = getLabelByIndex(index); // Get the corresponding JLabel
@@ -762,9 +768,8 @@ public class MainFrame extends javax.swing.JFrame {
         }
 
         // Create the AdjacencyMatrixGraph instance with the grid letters array
-        AdjacencyMatrixGraph<Character> graphTest = new AdjacencyMatrixGraph<Character>(
+        graphA = new AdjacencyMatrixGraph<Character>(
                 new Character[] { 'x', 'a', 'c', 'h', 'a', 't', 'm', 'p', 'a', 'r', 'a', 'o', 'r', 'o', 'r' }, 4);
-        System.out.println(graphTest);
 
         // Iterate through the dictionary words and populate the adjacency matrix
         for (String word : DictionaryTextArea.getText().split("\\n")) {
@@ -810,6 +815,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea DictionaryTextArea;
     private javax.swing.JButton FindWordButton;
+    private javax.swing.JTextField InputWord;
     private javax.swing.JButton LoadButton;
     private javax.swing.JButton SaveButton;
     private javax.swing.JLabel TimeLabel;
@@ -835,7 +841,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
