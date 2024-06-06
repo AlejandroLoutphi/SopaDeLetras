@@ -90,7 +90,8 @@ public class MainFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTextField2 = new javax.swing.JTextField();
@@ -409,48 +410,38 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        String newWord = "";
-        boolean validWord = false;
+        String newWord = InputWord.getText().trim();
 
-        // Loop until a valid word is entered
-        while (!validWord) {
-            newWord = JOptionPane.showInputDialog(this, "Introduzca una palabra de al menos 3 letras:",
-                    "Palabra Inválida", JOptionPane.ERROR_MESSAGE);
+        System.out.println("Entered word: '" + newWord + "' with length: " + newWord.length()); // Debugging statement
 
-            // Check if the new word is null (meaning cancel button was clicked)
-            if (newWord == null) {
-                // Exit the method without saving
-                return;
+        // Check if the length of the new word is at least 3
+        if (newWord.length() >= 3) {
+            newWord = newWord.toUpperCase();
+            int wordCount = DictionaryTextArea.getText().split("\n").length;
+
+            // Create the formatted word with the incremented number
+            String numberedWord = (wordCount + 1) + ". " + newWord;
+            // Convert to uppercase
+
+            // Add the new word to the DictionaryTextArea
+            DictionaryTextArea.append(numberedWord + "\n");
+            InputWord.setText("");
+
+            // Save the contents of the DictionaryTextArea to a file
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Guardar archivo de diccionario");
+            int userSelection = fileChooser.showSaveDialog(this);
+
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                File fileToSave = fileChooser.getSelectedFile();
+                saveDictionaryToFile(fileToSave);
+                JOptionPane.showMessageDialog(this, "El Diccionario Ha Sido Guardado Exitosamente!", "Guardado Exitoso",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
-
-            // Check if the length of the new word is at least 3
-            if (newWord.trim().length() >= 3) {
-                validWord = true;
-                newWord = newWord.trim().toUpperCase(); // Convert to uppercase
-                break; // Exit the loop
-            } else {
-                JOptionPane.showMessageDialog(this, "La palabra debe tener al menos 3 letras.", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-        // Add the new word to the DictionaryTextArea
-        if (!newWord.isEmpty()) {
-            // Append the new word to the existing text with a newline character
-            DictionaryTextArea.append(newWord.toUpperCase() + "\n");
-        }
-
-        // Save the contents of the DictionaryTextArea to a file
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Guardar archivo de diccionario");
-        int userSelection = fileChooser.showSaveDialog(this);
-
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            File fileToSave = fileChooser.getSelectedFile();
-
-            saveDictionaryToFile(fileToSave);
-            JOptionPane.showMessageDialog(this, "El Diccionario Ha Sido Guardado Exitosamente!", "Guardado Exitoso",
-                    JOptionPane.INFORMATION_MESSAGE);
-
+        } else {
+            // Show an error message if the word is invalid
+            JOptionPane.showMessageDialog(this, "La palabra debe tener al menos 3 letras.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
