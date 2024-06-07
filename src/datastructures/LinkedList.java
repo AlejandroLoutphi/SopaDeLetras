@@ -139,6 +139,7 @@ public class LinkedList<E> {
     public void add(E elt) {
         if (this.isEmpty()) {
             this.head = new LinkedListNode<E>(elt, null);
+            return;
         }
 
         this.getHead().add(elt);

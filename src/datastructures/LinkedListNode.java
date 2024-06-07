@@ -115,8 +115,10 @@ public class LinkedListNode<E> {
      * @param elt element to append
      */
     public void add(E elt) {
-        if (this.next != null)
+        if (this.next != null) {
             next.add(elt);
+            return;
+        }
 
         this.next = new LinkedListNode<E>(elt, null);
     }

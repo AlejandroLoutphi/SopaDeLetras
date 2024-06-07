@@ -92,7 +92,7 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTextField2 = new javax.swing.JTextField();
@@ -326,7 +326,7 @@ public class MainFrame extends javax.swing.JFrame {
         TimeLabel1.setText("Tiempo: 0ms");
         jPanel1.add(TimeLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 130, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 430));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -395,23 +395,22 @@ public class MainFrame extends javax.swing.JFrame {
     }// GEN-LAST:event_FindWordButtonActionPerformed
 
     private void displayDictionaryWords(LinkedList<String> dictionaryWords) {
-        StringBuilder sb = new StringBuilder();
-        int counter = 1;
-        int count2 = 0;
+        String sb = new String();
+        int counter = 0;
 
-        while (count2 < dictionaryWords.size() - 1) {
+        while (counter < dictionaryWords.size()) {
             String word = "";
             try {
-                word = dictionaryWords.getStringIndex(count2);
+                word = dictionaryWords.getStringIndex(counter);
             } catch (Exception e) {
             }
-            sb.append(counter).append(". ").append(word).append(System.lineSeparator());
+            sb = sb + Integer.toString(counter+1) + ". " + word + System.lineSeparator();
             counter++;
 
-            DictionaryTextArea.setText(sb.toString());
             // Set the concatenated string as the text of the text field
         }
-        populateAdjacencyMatrix();
+        DictionaryTextArea.setText(sb);
+        //populateAdjacencyMatrix();
     }
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -554,9 +553,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     }
 
-    private List<String> readFile(File file) {
-        List<String> dictionaryWords = new ArrayList<>();
-        List<String> boardLines = new ArrayList<>();
+    private LinkedList<String> readFile(File file) {
+        LinkedList<String> dictionaryWords = new LinkedList<>();
+        LinkedList<String> boardLines = new LinkedList<>();
         boolean readingBoard = false;
         boolean readingDictionary = false;
 
@@ -566,7 +565,7 @@ public class MainFrame extends javax.swing.JFrame {
             while ((line = br.readLine()) != null) {
                 // Remove commas and trim line
                 line = line.replaceAll(",", "").trim();
-
+                
                 if (line.equals("tab")) {
                     readingBoard = true;
                     readingDictionary = false;
@@ -584,7 +583,7 @@ public class MainFrame extends javax.swing.JFrame {
                 }
 
                 if (readingBoard) {
-                    boardLines.add(line);
+                    boardLines.add(line.toUpperCase());
                 } else if (readingDictionary) {
                     if (!line.matches("^\\d+\\..*")) {
                         dictionaryWords.add(line.toUpperCase());
@@ -597,14 +596,6 @@ public class MainFrame extends javax.swing.JFrame {
             // Now, you have boardLines containing the board letters and dictionaryWords
             // containing the dictionary words
             // Process boardLines and dictionaryWords as needed for your game
-            System.out.println("Letras de Grid");
-            for (String boardLine : boardLines) {
-                System.out.println(boardLine);
-            }
-            System.out.println("Palabras de Diccionario");
-            for (String word : dictionaryWords) {
-                System.out.println(word);
-            }
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error Leyendo Archivo: " + e.getMessage(), "Error",
@@ -616,18 +607,20 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void populateBoard(LinkedList<String> boardLines) {
         // Populate the JLabel components with board letters
+        System.out.println("BoardLines: " + Integer.toString(boardLines.size()));
         int index = 0;
         int count = 0;
 
-        while (count < boardLines.size() - 1) {
+        while (count < boardLines.size()) {
             String boardLine = "";
             try {
                 boardLine = boardLines.getStringIndex(count);
             } catch (Exception e) {
             }
             count += 1;
-            for (int i = 0; i < boardLine.length(); i++) {
-                JLabel label = getLabelByIndex(index); // Get the corresponding JLabel
+            for (int i = 0; i < 16; i++) {
+                JLabel label = getLabelByIndex(i); // Get the corresponding JLabel
+                label.setVisible(true);
                 label.setText(String.valueOf(boardLine.charAt(i))); // Set text with board letter
                 label.setVisible(true); // Make the label visible
                 index++;
