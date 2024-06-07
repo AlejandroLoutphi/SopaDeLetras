@@ -209,8 +209,8 @@ public class LinkedList<E> {
         int count = 0;
         while (pointer != null) {
            String prueba = (String) pointer.getElt();
-  //          System.out.println("[ "+prueba + " ]");
-            pointer = pointer.getNext();;
+            System.out.println("[ "+prueba + " ]");
+            pointer = pointer.getNext();
             if(count == index){
                 return prueba;
             }

@@ -12,8 +12,6 @@ import java.io.File;
 import javax.swing.JOptionPane;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
-import java.util.ArrayList;
 import javax.swing.JLabel;
 import static javax.swing.SwingConstants.CENTER;
 
@@ -240,7 +238,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 120, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 120, -1));
 
         TimeLabel.setText("Time: 0ms");
         jPanel1.add(TimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 90, 20));
@@ -262,12 +260,12 @@ public class MainFrame extends javax.swing.JFrame {
                 FindWordButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(FindWordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
+        jPanel1.add(FindWordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
 
         jLabel18.setText("Diccionario:");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 330));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
