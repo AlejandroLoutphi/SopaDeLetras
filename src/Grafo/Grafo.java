@@ -114,31 +114,7 @@ public class Grafo<E> {
 
 
     
-    public void resaltarCaminoMasCorto(ListaArray<Integer> caminoMasCorto) {
-    for (int i = 0; i < caminoMasCorto.getSize() - 1; i++) {
-        int nodoInicio = (int) caminoMasCorto.get(i+1);
-        
-        int nodoFin = (int) caminoMasCorto.get(i);
 
-        // Resalta el nodo de inicio
-        Node node = graph.getNode(Integer.toString(nodoInicio));
-        node.setAttribute("ui.style", "fill-color: blue;");
-
-        // Resalta la arista entre el nodo de inicio y el nodo de fin
-        Edge edge = node.getEdgeBetween(Integer.toString(nodoFin));
-        if (edge != null){
-             edge.setAttribute("ui.style", "fill-color: red;");
-        }else{
-            nodoInicio=3; //Arreglar iteracion entre cada nodo proximo 
-            
-            
-        }
-
-    // Resalta el último nodo
-    Node lastNode = graph.getNode(Integer.toString(nodoFin));
-    lastNode.setAttribute("ui.style", "fill-color:green;");
-    }
-}
    
     public Vertice getVertice(int valor) {
         for (int i = 0; i < vertices.getSize(); i++) {
