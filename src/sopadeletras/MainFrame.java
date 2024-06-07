@@ -23,7 +23,9 @@ import java.util.List;
 
 /**
  *
- * @author ayahzaheraldeen, Alejandro Loutphi
+ * @author ayahzaheraldeen
+ * @author Alejandro Loutphi
+ * @author luciano2777
  */
 public class MainFrame extends javax.swing.JFrame {
     private boolean[][] adjacencyMatrix;
@@ -92,7 +94,8 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTextField2 = new javax.swing.JTextField();
@@ -359,7 +362,6 @@ public class MainFrame extends javax.swing.JFrame {
     }// GEN-LAST:event_jTextField2ActionPerformed
 
     private void FindWordButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_FindWordButtonActionPerformed
-        // TODO add your handling code here:
         String selectedAlgorithm = (String) jComboBox1.getSelectedItem();
         String word = InputWord.getText();
         char[] wordArray = word.toCharArray();
@@ -404,13 +406,10 @@ public class MainFrame extends javax.swing.JFrame {
                 word = dictionaryWords.getStringIndex(counter);
             } catch (Exception e) {
             }
-            sb = sb + Integer.toString(counter+1) + ". " + word + System.lineSeparator();
+            sb = sb + Integer.toString(counter + 1) + ". " + word + System.lineSeparator();
             counter++;
-
-            // Set the concatenated string as the text of the text field
         }
         DictionaryTextArea.setText(sb);
-        //populateAdjacencyMatrix();
     }
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -496,45 +495,53 @@ public class MainFrame extends javax.swing.JFrame {
             return;
         }
 
-        List<String> dictionaryWordsList = Arrays.asList(DictionaryTextArea.getText().split("\\n"));
-        List<String> foundWords = new ArrayList<>();
-        List<Character[]> dictionaryWords = new ArrayList<>();
+        LinkedList<String> dictionaryWordsList = new LinkedList<>(DictionaryTextArea.getText().split("\\n"));
+        LinkedList<String> foundWords = new LinkedList<>();
+        LinkedList<Character[]> dictionaryWords = new LinkedList<>();
 
         // Convert dictionary words from String to Character[] arrays
-        for (String word : dictionaryWordsList) {
+        String word = "";
+        for (int i = 0; i < dictionaryWordsList.size(); i++) {
+            word = dictionaryWordsList.get(i);
             if (!word.trim().isEmpty()) {
                 word = word.trim().toUpperCase();
                 dictionaryWords.add(word.chars().mapToObj(c -> (char) c).toArray(Character[]::new));
             }
         }
-        List<String> notFoundWords = new ArrayList<>();
+        LinkedList<String> notFoundWords = new LinkedList<>();
 
         startTimer();
 
-        for (Character[] word : dictionaryWords) {
+        Character[] wordChars;
+        for (int i = 0; i < dictionaryWords.size(); i++) {
+            wordChars = dictionaryWords.get(i);
             boolean wordFound = false;
 
             switch (selectedAlgorithm) {
                 case "BFS":
-                    wordFound = graphA.breadthFirstSearchArray(word);
+                    wordFound = graphA.breadthFirstSearchArray(wordChars);
                     break;
                 case "DFS":
-                    wordFound = graphA.depthFirstSearchArray(word);
+                    wordFound = graphA.depthFirstSearchArray(wordChars);
                     break;
             }
 
             if (wordFound) {
-                foundWords.add(new String(convertCharacterArrayToCharArray(word)));
+                foundWords.add(new String(convertCharacterArrayToCharArray(wordChars)));
             } else {
-                notFoundWords.add(new String(convertCharacterArrayToCharArray(word)));
+                notFoundWords.add(new String(convertCharacterArrayToCharArray(wordChars)));
             }
 
         }
 
         stopTimer();
-        String message = "Words found: " + foundWords.size() + "\n" + String.join(", ", foundWords) + "\n\n" +
-                "Words not found: " + notFoundWords.size() + "\n" + String.join(", ", notFoundWords);
-        JOptionPane.showMessageDialog(this, message);
+        /*
+         * String message = "Words found: " + foundWords.size() + "\n" +
+         * String.join(", ", foundWords) + "\n\n" +
+         * "Words not found: " + notFoundWords.size() + "\n" + String.join(", ",
+         * notFoundWords);
+         * JOptionPane.showMessageDialog(this, message);
+         */
     }
 
     private char[] convertCharacterArrayToCharArray(Character[] characterArray) {
@@ -543,19 +550,15 @@ public class MainFrame extends javax.swing.JFrame {
             charArray[i] = characterArray[i];
         }
         return charArray;
-
     }
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        String selectedAlgorithm = (String) jComboBox1.getSelectedItem();
-        // Your custom code here
-
     }
 
     private LinkedList<String> readFile(File file) {
         LinkedList<String> dictionaryWords = new LinkedList<>();
-        LinkedList<String> boardLines = new LinkedList<>();
+        String boardLine = "";
         boolean readingBoard = false;
         boolean readingDictionary = false;
 
@@ -565,7 +568,7 @@ public class MainFrame extends javax.swing.JFrame {
             while ((line = br.readLine()) != null) {
                 // Remove commas and trim line
                 line = line.replaceAll(",", "").trim();
-                
+
                 if (line.equals("tab")) {
                     readingBoard = true;
                     readingDictionary = false;
@@ -583,19 +586,14 @@ public class MainFrame extends javax.swing.JFrame {
                 }
 
                 if (readingBoard) {
-                    boardLines.add(line.toUpperCase());
+                    boardLine = line;
                 } else if (readingDictionary) {
                     if (!line.matches("^\\d+\\..*")) {
                         dictionaryWords.add(line.toUpperCase());
                     }
                 }
             }
-
-            populateBoard(boardLines);
-
-            // Now, you have boardLines containing the board letters and dictionaryWords
-            // containing the dictionary words
-            // Process boardLines and dictionaryWords as needed for your game
+            populateBoard(boardLine);
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error Leyendo Archivo: " + e.getMessage(), "Error",
@@ -605,30 +603,17 @@ public class MainFrame extends javax.swing.JFrame {
         return dictionaryWords;
     }
 
-    private void populateBoard(LinkedList<String> boardLines) {
+    private void populateBoard(String boardLine) {
         // Populate the JLabel components with board letters
-        System.out.println("BoardLines: " + Integer.toString(boardLines.size()));
-        int index = 0;
-        int count = 0;
-
-        while (count < boardLines.size()) {
-            String boardLine = "";
-            try {
-                boardLine = boardLines.getStringIndex(count);
-            } catch (Exception e) {
-            }
-            count += 1;
-            for (int i = 0; i < 16; i++) {
-                JLabel label = getLabelByIndex(i); // Get the corresponding JLabel
-                label.setVisible(true);
-                label.setText(String.valueOf(boardLine.charAt(i))); // Set text with board letter
-                label.setVisible(true); // Make the label visible
-                index++;
-
-            }
-
+        Character[] graphBuilderArray = new Character[boardLine.length()];
+        for (int i = 0; i < boardLine.length(); i++) {
+            JLabel label = getLabelByIndex(i); // Get the corresponding JLabel
+            label.setVisible(true);
+            label.setText(String.valueOf(boardLine.charAt(i))); // Set text with board letter
+            label.setVisible(true); // Make the label visible
+            graphBuilderArray[i] = boardLine.charAt(i);
         }
-
+        this.graphA = new AdjacencyMatrixGraph<>(graphBuilderArray, 4);
     }
 
     private JLabel getLabelByIndex(int index) {
@@ -726,83 +711,6 @@ public class MainFrame extends javax.swing.JFrame {
 
             }
         });
-    }
-
-    private void populateAdjacencyMatrix() {
-
-        // Get the text from all the JLabels and concatenate them into a single string
-        StringBuilder gridText = new StringBuilder();
-        JLabel[] labels = { jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9, jLabel10,
-                jLabel11, jLabel12, jLabel13, jLabel14, jLabel15, jLabel16 };
-        for (JLabel label : labels) {
-            gridText.append(label.getText());
-        }
-
-        char[] gridLetters = new char[16]; // Create an array to hold the letters from the grid
-
-        // Iterate through each JLabel to extract the letters
-        int index = 0;
-        for (JLabel label : labels) {
-            String labelText = label.getText();
-            if (!labelText.isEmpty()) {
-                // Extract the first character from the JLabel's text
-                char letter = labelText.charAt(0);
-                gridLetters[index] = letter; // Store the letter in the array
-            } else {
-                // Handle empty labels if necessary
-            }
-            index++;
-
-        }
-        Character[] gridCharacters = new Character[gridLetters.length];
-        System.out.println(gridLetters.length);
-        for (int i = 0; i < gridLetters.length; i++) {
-            gridCharacters[i] = gridLetters[i]; // Autoboxing: char to Character conversion
-        }
-
-        // Create the AdjacencyMatrixGraph instance with the grid letters array
-        graphA = new AdjacencyMatrixGraph<Character>(
-                new Character[] { 'x', 'a', 'c', 'h', 'a', 't', 'm', 'p', 'a', 'r', 'a', 'o', 'r', 'o', 'r' }, 4);
-
-        // Iterate through the dictionary words and populate the adjacency matrix
-        for (String word : DictionaryTextArea.getText().split("\\n")) {
-            for (int i = 0; i < word.length() - 1; i++) {
-                char letter1 = word.charAt(i);
-                char letter2 = word.charAt(i + 1);
-
-                // Get the positions of the letters in the grid
-                int position1 = gridText.indexOf(String.valueOf(letter1));
-                int position2 = gridText.indexOf(String.valueOf(letter2));
-
-                // Calculate the row and column indices from the positions
-                int row1 = position1 / 4;
-                int col1 = position1 % 4;
-                int row2 = position2 / 4;
-                int col2 = position2 % 4;
-
-                // Calculate the cell indices from the row and column indices
-                int cell1 = row1 * 4 + col1;
-                int cell2 = row2 * 4 + col2;
-
-                // Mark the cells as adjacent in the adjacency matrix
-                // adjacencyMatrix[cell1][cell2] = true;
-                // adjacencyMatrix[cell2][cell1] = true;
-            }
-        }
-
-        // Print or display the adjacency matrix if needed
-        printAdjacencyMatrix();
-
-    }
-
-    private void printAdjacencyMatrix() {
-        System.out.println("Adjacency Matrix:");
-        for (int i = 0; i < 16; i++) {
-            for (int j = 0; j < 16; j++) {
-                System.out.print(adjacencyMatrix[i][j] ? "1 " : "0 ");
-            }
-            System.out.println();
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
