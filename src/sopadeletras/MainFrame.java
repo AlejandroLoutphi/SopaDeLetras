@@ -75,7 +75,8 @@ public class MainFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTextField2 = new javax.swing.JTextField();
@@ -108,6 +109,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         SearchDictionaryButton = new javax.swing.JButton();
+        AddToDictionaryButton = new javax.swing.JButton();
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,8 +129,8 @@ public class MainFrame extends javax.swing.JFrame {
                 SaveButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
-        jPanel1.add(InputWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 120, -1));
+        jPanel1.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, -1, -1));
+        jPanel1.add(InputWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 240, -1));
 
         Title.setBackground(new java.awt.Color(255, 102, 0));
         Title.setFont(new java.awt.Font("Bangla MN", 1, 20)); // NOI18N
@@ -158,17 +160,17 @@ public class MainFrame extends javax.swing.JFrame {
                 FindWordButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(FindWordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+        jPanel1.add(FindWordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Impact", 1, 20)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 51, 204));
         jLabel18.setText("Diccionario:");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 170, 30));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 170, 30));
 
         jLabel19.setFont(new java.awt.Font("Kavivanar", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 102, 102));
         jLabel19.setText("Introduce la Palabra para buscar: ");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
         TimeLabel.setBackground(new java.awt.Color(102, 153, 255));
         TimeLabel.setFont(new java.awt.Font("Baloo Paaji 2", 1, 20)); // NOI18N
@@ -182,7 +184,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel1.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel1.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 50, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 50, 40));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -190,7 +192,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel2.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel2.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 50, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 50, 40));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -198,7 +200,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel3.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel3.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 50, 40));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 50, 40));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -206,7 +208,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel4.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel4.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 50, 40));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 50, 40));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -214,7 +216,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel5.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel5.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 50, 40));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 50, 40));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -222,12 +224,12 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel6.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel6.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 50, 40));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 50, 40));
 
         DictionaryText.setOpaque(true);
         DictionaryPane.setViewportView(DictionaryText);
 
-        jPanel1.add(DictionaryPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 260, 160));
+        jPanel1.add(DictionaryPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 260, 160));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -235,7 +237,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel7.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel7.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 50, 40));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 50, 40));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -243,7 +245,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel8.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel8.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 50, 40));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 50, 40));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -251,7 +253,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel9.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel9.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 50, 40));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 50, 40));
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -259,7 +261,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel10.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel10.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 50, 40));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 50, 40));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -267,7 +269,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel11.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel11.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 50, 40));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 50, 40));
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -275,7 +277,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel12.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel12.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 50, 40));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 50, 40));
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -283,7 +285,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel13.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel13.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 50, 40));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 50, 40));
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -291,7 +293,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel14.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel14.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 50, 40));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 50, 40));
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -299,7 +301,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel15.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel15.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 50, 40));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 50, 40));
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -307,7 +309,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
         jLabel16.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel16.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 50, 40));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 50, 40));
 
         SearchDictionaryButton.setText("Buscar Palabras");
         SearchDictionaryButton.addActionListener(new java.awt.event.ActionListener() {
@@ -315,12 +317,45 @@ public class MainFrame extends javax.swing.JFrame {
                 SearchDictionaryButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(SearchDictionaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
+        jPanel1.add(SearchDictionaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 330));
+        AddToDictionaryButton.setText("Añadir a Diccionario");
+        AddToDictionaryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddToDictionaryButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(AddToDictionaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AddToDictionaryButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_AddToDictionaryButtonActionPerformed
+        String newWord = InputWord.getText().trim();
+
+        // Check if the length of the new word is at least 3
+        if (newWord.length() < 3) {
+            // Show an error message if the word is invalid
+            JOptionPane.showMessageDialog(this, "La palabra debe tener al menos 3 letras.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        newWord = newWord.toUpperCase();
+        int wordCount = DictionaryText.getText().split("<br>").length;
+
+        // Add the new word to the DictionaryText
+        DictionaryText.setText(DictionaryText.getText()
+                + "<br><font color=black>"
+                + Integer.toString(wordCount + 1)
+                + ". "
+                + newWord.toUpperCase()
+                + "</font><br>");
+        InputWord.setText("");
+
+    }// GEN-LAST:event_AddToDictionaryButtonActionPerformed
 
     private void SearchDictionaryButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SearchDictionaryButtonActionPerformed
         searchDictionaryWords();
@@ -463,28 +498,6 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        //TODO move to its own button
-        //String newWord = InputWord.getText().trim();
-
-        //// Check if the length of the new word is at least 3
-        //if (newWord.length() < 3) {
-        //    // Show an error message if the word is invalid
-        //    JOptionPane.showMessageDialog(this, "La palabra debe tener al menos 3 letras.", "Error",
-        //            JOptionPane.ERROR_MESSAGE);
-        //    return;
-        //}
-
-        //newWord = newWord.toUpperCase();
-        //int wordCount = DictionaryText.getText().split("<br>").length;
-
-        //// Create the formatted word with the incremented number
-        //String numberedWord = (wordCount + 1) + ". " + newWord;
-        //// Convert to uppercase
-
-        //// Add the new word to the DictionaryText
-        //DictionaryText.setText(DictionaryText.getText() + numberedWord + "\n");
-        //InputWord.setText("");
-
         // Save the contents of the DictionaryText to a file
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Guardar archivo de diccionario");
@@ -701,6 +714,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddToDictionaryButton;
     private javax.swing.JScrollPane DictionaryPane;
     private javax.swing.JLabel DictionaryText;
     private javax.swing.JButton FindWordButton;
