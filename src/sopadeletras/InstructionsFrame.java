@@ -15,6 +15,8 @@ public class InstructionsFrame extends javax.swing.JFrame {
      */
     public InstructionsFrame() {
         initComponents();
+        this.jTextArea1.setEditable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
