@@ -274,12 +274,12 @@ public class AdjacencyMatrixGraph<E> {
                 taken = queueEntry.getTaken();
 
                 for (int k = 0; k < this.elts.length; k++) {
-                    if (!this.hasEdge(entry, k)) {
+                    if (!this.hasEdge(entry, k) || taken[k]) {
                         continue;
                     }
 
                     oGraph.linkAToB(entry, k);
-                    if ((this.get(k) != arr[j]) || taken[k]) {
+                    if (this.get(k) != arr[j]) {
                         continue;
                     }
 
