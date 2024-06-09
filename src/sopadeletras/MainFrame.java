@@ -110,6 +110,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         SearchDictionaryButton = new javax.swing.JButton();
         AddToDictionaryButton = new javax.swing.JButton();
+        InstructionsButton = new javax.swing.JButton();
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,218 +121,281 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(160, 158, 214));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        SaveButton.setBackground(new java.awt.Color(145, 33, 143));
+        SaveButton.setFont(new java.awt.Font("BM Hanna Pro", 1, 14)); // NOI18N
+        SaveButton.setForeground(java.awt.Color.white);
         SaveButton.setText("Guardar");
         SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SaveButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, -1, -1));
-        jPanel1.add(InputWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 240, -1));
+        jPanel1.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, -1, -1));
 
-        Title.setBackground(new java.awt.Color(255, 102, 0));
-        Title.setFont(new java.awt.Font("Bangla MN", 1, 20)); // NOI18N
-        Title.setForeground(new java.awt.Color(255, 102, 0));
+        InputWord.setBackground(new java.awt.Color(244, 235, 254));
+        jPanel1.add(InputWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 150, -1));
+
+        Title.setBackground(new java.awt.Color(75, 37, 109));
+        Title.setFont(new java.awt.Font("BM Hanna Pro", 1, 36)); // NOI18N
+        Title.setForeground(new java.awt.Color(75, 37, 109));
         Title.setText("Sopa De Letras");
-        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 180, 30));
+        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 270, 30));
 
+        jComboBox1.setBackground(new java.awt.Color(207, 151, 215));
+        jComboBox1.setFont(new java.awt.Font("BM Hanna Pro", 1, 14)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BFS", "DFS", " " }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, -1, -1));
 
+        LoadButton.setBackground(new java.awt.Color(111, 84, 174));
+        LoadButton.setFont(new java.awt.Font("BM Hanna Pro", 1, 14)); // NOI18N
+        LoadButton.setForeground(new java.awt.Color(255, 255, 255));
         LoadButton.setText("Cargar Archivo");
         LoadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoadButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(LoadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        jPanel1.add(LoadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
+        FindWordButton.setBackground(new java.awt.Color(145, 33, 143));
+        FindWordButton.setFont(new java.awt.Font("BM Hanna 11yrs Old", 1, 14)); // NOI18N
+        FindWordButton.setForeground(java.awt.Color.white);
         FindWordButton.setText("Buscar Palabra");
         FindWordButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FindWordButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(FindWordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+        jPanel1.add(FindWordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, -1));
 
-        jLabel18.setFont(new java.awt.Font("Impact", 1, 20)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel18.setFont(new java.awt.Font("BM Hanna Pro", 1, 30)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(110, 0, 108));
         jLabel18.setText("Diccionario:");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 170, 30));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 190, 30));
 
-        jLabel19.setFont(new java.awt.Font("Kavivanar", 1, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel19.setText("Introduce la Palabra para buscar: ");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        jLabel19.setFont(new java.awt.Font("BM Hanna 11yrs Old", 1, 15)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(75, 37, 109));
+        jLabel19.setText("Palabra :");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 70, 20));
 
-        TimeLabel.setBackground(new java.awt.Color(102, 153, 255));
-        TimeLabel.setFont(new java.awt.Font("Baloo Paaji 2", 1, 20)); // NOI18N
-        TimeLabel.setForeground(new java.awt.Color(51, 153, 255));
+        TimeLabel.setBackground(new java.awt.Color(244, 235, 254));
+        TimeLabel.setFont(new java.awt.Font("BM Hanna 11yrs Old", 1, 20)); // NOI18N
+        TimeLabel.setForeground(new java.awt.Color(110, 0, 108));
         TimeLabel.setText("Tiempo: 0ms");
-        jPanel1.add(TimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 130, 20));
+        TimeLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 2, 0, new java.awt.Color(244, 235, 254)));
+        jPanel1.add(TimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 130, 20));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setBackground(new java.awt.Color(244, 235, 254));
         jLabel1.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(75, 37, 109));
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel1.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel1.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 50, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 50, 40));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setBackground(new java.awt.Color(244, 235, 254));
         jLabel2.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(75, 37, 109));
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel2.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel2.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 50, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 50, 40));
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setBackground(new java.awt.Color(244, 235, 254));
         jLabel3.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(75, 37, 109));
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel3.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel3.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 50, 40));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 50, 40));
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setBackground(new java.awt.Color(244, 235, 254));
         jLabel4.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(75, 37, 109));
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel4.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel4.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 50, 40));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 50, 40));
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setBackground(new java.awt.Color(244, 235, 254));
         jLabel5.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(75, 37, 109));
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel5.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel5.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 50, 40));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 50, 40));
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setBackground(new java.awt.Color(244, 235, 254));
         jLabel6.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(75, 37, 109));
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel6.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel6.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 50, 40));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 50, 40));
 
+        DictionaryText.setBackground(new java.awt.Color(244, 235, 254));
+        DictionaryText.setForeground(new java.awt.Color(153, 153, 255));
+        DictionaryText.setAutoscrolls(true);
+        DictionaryText.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         DictionaryText.setOpaque(true);
         DictionaryPane.setViewportView(DictionaryText);
 
-        jPanel1.add(DictionaryPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 260, 160));
+        jPanel1.add(DictionaryPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 240, 160));
 
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setBackground(new java.awt.Color(244, 235, 254));
         jLabel7.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(75, 37, 109));
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel7.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel7.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 50, 40));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 50, 40));
 
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setBackground(new java.awt.Color(244, 235, 254));
         jLabel8.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(75, 37, 109));
         jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel8.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel8.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 50, 40));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 50, 40));
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setBackground(new java.awt.Color(244, 235, 254));
         jLabel9.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(75, 37, 109));
         jLabel9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel9.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel9.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 50, 40));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 50, 40));
 
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setBackground(new java.awt.Color(244, 235, 254));
         jLabel10.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(75, 37, 109));
         jLabel10.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel10.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel10.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 50, 40));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 50, 40));
 
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setBackground(new java.awt.Color(244, 235, 254));
         jLabel11.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(75, 37, 109));
         jLabel11.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel11.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel11.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 50, 40));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 50, 40));
 
-        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setBackground(new java.awt.Color(244, 235, 254));
         jLabel12.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(75, 37, 109));
         jLabel12.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel12.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel12.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 50, 40));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 50, 40));
 
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setBackground(new java.awt.Color(244, 235, 254));
         jLabel13.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(75, 37, 109));
         jLabel13.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel13.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel13.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 50, 40));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 50, 40));
 
-        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel14.setBackground(new java.awt.Color(246, 143, 160));
         jLabel14.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(75, 37, 109));
         jLabel14.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel14.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel14.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 50, 40));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 50, 40));
 
-        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel15.setBackground(new java.awt.Color(244, 235, 254));
         jLabel15.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(75, 37, 109));
         jLabel15.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel15.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel15.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 50, 40));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 50, 40));
 
-        jLabel16.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel16.setBackground(new java.awt.Color(244, 235, 254));
         jLabel16.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(75, 37, 109));
         jLabel16.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
+        jLabel16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 37, 109), 3, true));
         jLabel16.setMaximumSize(new java.awt.Dimension(44, 44));
         jLabel16.setMinimumSize(new java.awt.Dimension(44, 44));
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 50, 40));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 50, 40));
 
+        SearchDictionaryButton.setBackground(new java.awt.Color(145, 33, 143));
+        SearchDictionaryButton.setFont(new java.awt.Font("BM Hanna Pro", 0, 13)); // NOI18N
+        SearchDictionaryButton.setForeground(java.awt.Color.white);
         SearchDictionaryButton.setText("Buscar Palabras");
         SearchDictionaryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchDictionaryButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(SearchDictionaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, -1, -1));
+        jPanel1.add(SearchDictionaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
 
+        AddToDictionaryButton.setBackground(new java.awt.Color(145, 33, 143));
+        AddToDictionaryButton.setFont(new java.awt.Font("BM Hanna 11yrs Old", 1, 14)); // NOI18N
+        AddToDictionaryButton.setForeground(java.awt.Color.white);
         AddToDictionaryButton.setText("Añadir a Diccionario");
         AddToDictionaryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddToDictionaryButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(AddToDictionaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
+        jPanel1.add(AddToDictionaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, -1, -1));
+
+        InstructionsButton.setBackground(new java.awt.Color(111, 84, 174));
+        InstructionsButton.setFont(new java.awt.Font("BM Hanna Pro", 1, 14)); // NOI18N
+        InstructionsButton.setForeground(new java.awt.Color(255, 255, 255));
+        InstructionsButton.setText("Instrucciones");
+        InstructionsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InstructionsButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(InstructionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 120, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void InstructionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InstructionsButtonActionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == InstructionsButton) {
+      InstructionsFrame instructionsFrame = new InstructionsFrame();
+      instructionsFrame.setVisible(true);
+     
+    }//GEN-LAST:event_InstructionsButtonActionPerformed
+    }
+    
+    
+  
     private void AddToDictionaryButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_AddToDictionaryButtonActionPerformed
         String newWord = InputWord.getText().trim();
 
@@ -408,16 +472,17 @@ public class MainFrame extends javax.swing.JFrame {
     private void FindWordButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_FindWordButtonActionPerformed
         String selectedAlgorithm = (String) jComboBox1.getSelectedItem();
         String word = InputWord.getText();
+        String uppercaseWord = word.toUpperCase();
         boolean wordFound = false;
         startTimer();
 
         // TODO change this when adding BFS vis
         switch (selectedAlgorithm) {
             case "BFS":
-                wordFound = foundStringBfs(word);
+                wordFound = foundStringBfs(uppercaseWord);
                 break;
             case "DFS":
-                wordFound = foundStringDfs(word);
+                wordFound = foundStringDfs(uppercaseWord);
                 break;
             default:
                 JOptionPane.showMessageDialog(this, "Please select a search algorithm.");
@@ -428,9 +493,9 @@ public class MainFrame extends javax.swing.JFrame {
         stopTimer();
 
         if (wordFound) {
-            JOptionPane.showMessageDialog(this, "Word found!");
+            JOptionPane.showMessageDialog(this, "Palabra Encontrada!");
         } else {
-            JOptionPane.showMessageDialog(this, "Word not found.");
+            JOptionPane.showMessageDialog(this, "Palabra no Encontrada.");
         }
 
     }// GEN-LAST:event_FindWordButtonActionPerformed
@@ -719,6 +784,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel DictionaryText;
     private javax.swing.JButton FindWordButton;
     private javax.swing.JTextField InputWord;
+    private javax.swing.JButton InstructionsButton;
     private javax.swing.JButton LoadButton;
     private javax.swing.JButton SaveButton;
     private javax.swing.JButton SearchDictionaryButton;
