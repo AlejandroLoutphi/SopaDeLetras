@@ -47,6 +47,14 @@ public class AdjacencyMatrixGraph<E> {
     private final E[] elts;
 
     /**
+     * Construct an empty, null graph.
+     */
+    public AdjacencyMatrixGraph() {
+        this.elts = null;
+        this.adjacencyMatrix = null;
+    }
+
+    /**
      * Construct graph with the elements in the input array and no edges.
      * 
      * @param elts array of elements to be contained in the graph vertices
@@ -204,7 +212,7 @@ public class AdjacencyMatrixGraph<E> {
      * elements of the array passed in using a breadth-first search (BFS), starting
      * from a specified vertex.
      * 
-     * @param arr array of elements
+     * @param arr        array of elements
      * @param inputEntry graph vertex index specifying where the sequence begins
      * @return true if the vertex sequence was found. Otherwise, false
      */
@@ -263,5 +271,93 @@ public class AdjacencyMatrixGraph<E> {
                 return true;
         }
         return false;
+    }
+
+    /**
+     * Traverses the graph to find a connected sequence of vertices that contain the
+     * elements of the array passed in using a breadth-first search (BFS), starting
+     * from a specified vertex. Creates a traversal tree, in the form of an
+     * AdjacencyMatrixGraph for visualization.
+     * 
+     * @param arr        array of elements
+     * @param inputEntry graph vertex index specifying where the sequence begins
+     * @return found = whether the vertex sequence was found. graph = traversal tree
+     */
+    private BreadthFirstSearchVisReturn<E> breadthFirstSearchArrayWithVisFromEntry(
+            E[] arr,
+            int inputEntry) {
+        int entry;
+        boolean[] taken = new boolean[this.elts.length];
+        taken[inputEntry] = true;
+        boolean[] nextTaken;
+        NodeQueue<BreadthFirstSearchQueueEntry> prevLayerQueue = new NodeQueue<>();
+        NodeQueue<BreadthFirstSearchQueueEntry> nextLayerQueue = new NodeQueue<>();
+        BreadthFirstSearchQueueEntry queueEntry;
+        AdjacencyMatrixGraph<E> oGraph = new AdjacencyMatrixGraph<>(this.elts);
+
+        prevLayerQueue.enqueue(new BreadthFirstSearchQueueEntry(inputEntry, taken));
+
+        for (int j = 1; j < arr.length; j++) {
+            while (!prevLayerQueue.isEmpty()) {
+                queueEntry = prevLayerQueue.dequeue().getElt();
+                entry = queueEntry.getEntry();
+                taken = queueEntry.getTaken();
+
+                for (int k = 0; k < this.elts.length; k++) {
+                    if (!this.hasEdge(entry, k)) {
+                        continue;
+                    }
+
+                    oGraph.linkAToB(entry, k);
+                    if ((this.get(k) != arr[j]) || taken[k]) {
+                        continue;
+                    }
+
+                    if (j == (arr.length - 1)) {
+                        return new BreadthFirstSearchVisReturn<>(true, oGraph);
+                    }
+
+                    nextTaken = taken.clone();
+                    nextTaken[k] = true;
+                    nextLayerQueue.enqueue(new BreadthFirstSearchQueueEntry(k, nextTaken));
+                }
+            }
+            prevLayerQueue = nextLayerQueue;
+            nextLayerQueue = new NodeQueue<>();
+        }
+
+        return new BreadthFirstSearchVisReturn<>(false, oGraph);
+    }
+
+    /**
+     * Traverses the graph to find a connected sequence of vertices that contain the
+     * elements of the array passed in using a breadth-first search (BFS). Creates a
+     * traversal tree, in the form of an AdjacencyMatrixGraph for visualization.
+     * 
+     * @param arr array of elements
+     * @return found = whether the vertex sequence was found. graph = traversal tree
+     */
+    public BreadthFirstSearchVisReturn<E> breadthFirstSearchArrayWithVis(E[] arr) {
+        BreadthFirstSearchVisReturn<E> o = new BreadthFirstSearchVisReturn<>(false, new AdjacencyMatrixGraph<E>());
+        for (int i = 0; i < this.elts.length; i++) {
+            if (!this.get(i).equals(arr[0]))
+                continue;
+            o = this.breadthFirstSearchArrayWithVisFromEntry(arr, i);
+            if (o.getFound())
+                return o;
+        }
+        return o;
+    }
+
+    public boolean[][] getAdjacencyMatrix() {
+        return adjacencyMatrix;
+    }
+
+    public E[] getElts() {
+        return elts;
+    }
+
+    public int size() {
+        return elts.length;
     }
 }
