@@ -4,36 +4,6 @@
  */
 package datastructures;
 
-class BreadthFirstSearchQueueEntry {
-
-    private int entry;
-    private boolean[] taken;
-
-    public BreadthFirstSearchQueueEntry(
-            int entry,
-            boolean[] taken) {
-        this.entry = entry;
-        this.taken = taken;
-    }
-
-    public int getEntry() {
-        return entry;
-    }
-
-    public void setEntry(int entry) {
-        this.entry = entry;
-    }
-
-    public boolean[] getTaken() {
-        return taken;
-    }
-
-    public void setTaken(boolean[] taken) {
-        this.taken = taken;
-    }
-
-}
-
 /**
  * Graph class.
  * Elements (vertices) are immutable.

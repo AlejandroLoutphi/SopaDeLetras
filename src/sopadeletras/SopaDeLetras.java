@@ -11,10 +11,11 @@ package sopadeletras;
 public class SopaDeLetras {
 
     /**
+     * Creates a SopaDeLetras MainFrame window.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        MainFrame window = new MainFrame();
     }
     
 }

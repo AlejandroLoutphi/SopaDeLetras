@@ -39,6 +39,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setVisible(true);
         this.setBackground(new java.awt.Color(160, 158, 214));
         this.DictionaryText.setBackground(new java.awt.Color(255, 255, 255));
         JLabel[] labels = { jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9, jLabel10,
