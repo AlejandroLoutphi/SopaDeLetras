@@ -33,6 +33,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setBackground(new java.awt.Color(160, 158, 214));
         this.DictionaryText.setBackground(new java.awt.Color(255, 255, 255));
         JLabel[] labels = { jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9, jLabel10,
                 jLabel11, jLabel12, jLabel13, jLabel14, jLabel15, jLabel16 };
@@ -59,13 +60,15 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void startTimer() {
         TimeLabel.setText("Tiempo: 0ms");
-        startTime = System.currentTimeMillis();
+        startTime = System.nanoTime();
+        //startTime = System.currentTimeMillis();
     }
 
     private void stopTimer() {
-        long ellapsedTime = System.currentTimeMillis() - startTime;
-        TimeLabel.setText("Tiempo:" + Long.toString(ellapsedTime) + "ms");
-
+        double ellapsedTime = (double) (System.nanoTime() - startTime);
+        //long ellapsedTime = System.currentTimeMillis() - startTime;
+        TimeLabel.setText("Tiempo:" + String.format("%.2f", ellapsedTime/1000000) + "ms");
+        //TimeLabel.setText("Tiempo:" + Long.toString(ellapsedTime) + "ms");
     }
 
     /**
@@ -79,7 +82,6 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField2 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         SaveButton = new javax.swing.JButton();
         InputWord = new javax.swing.JTextField();
@@ -112,13 +114,8 @@ public class MainFrame extends javax.swing.JFrame {
         AddToDictionaryButton = new javax.swing.JButton();
         InstructionsButton = new javax.swing.JButton();
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(160, 158, 214));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(160, 158, 214));
@@ -136,7 +133,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, -1, -1));
 
         InputWord.setBackground(new java.awt.Color(244, 235, 254));
-        jPanel1.add(InputWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 150, -1));
+        jPanel1.add(InputWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, 150, -1));
 
         Title.setBackground(new java.awt.Color(75, 37, 109));
         Title.setFont(new java.awt.Font("BM Hanna Pro", 1, 36)); // NOI18N
@@ -153,7 +150,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, -1, -1));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, -1, -1));
 
         LoadButton.setBackground(new java.awt.Color(111, 84, 174));
         LoadButton.setFont(new java.awt.Font("BM Hanna Pro", 1, 14)); // NOI18N
@@ -164,7 +161,7 @@ public class MainFrame extends javax.swing.JFrame {
                 LoadButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(LoadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        jPanel1.add(LoadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 180, -1));
 
         FindWordButton.setBackground(new java.awt.Color(145, 33, 143));
         FindWordButton.setFont(new java.awt.Font("BM Hanna 11yrs Old", 1, 14)); // NOI18N
@@ -175,7 +172,7 @@ public class MainFrame extends javax.swing.JFrame {
                 FindWordButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(FindWordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, -1));
+        jPanel1.add(FindWordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("BM Hanna Pro", 1, 30)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(110, 0, 108));
@@ -185,14 +182,14 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("BM Hanna 11yrs Old", 1, 15)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(75, 37, 109));
         jLabel19.setText("Palabra :");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 70, 20));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 70, 20));
 
-        TimeLabel.setBackground(new java.awt.Color(244, 235, 254));
+        TimeLabel.setBackground(new java.awt.Color(160, 158, 214));
         TimeLabel.setFont(new java.awt.Font("BM Hanna 11yrs Old", 1, 20)); // NOI18N
         TimeLabel.setForeground(new java.awt.Color(110, 0, 108));
         TimeLabel.setText("Tiempo: 0ms");
-        TimeLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 2, 0, new java.awt.Color(244, 235, 254)));
-        jPanel1.add(TimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 130, 20));
+        TimeLabel.setOpaque(true);
+        jPanel1.add(TimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 210, 20));
 
         jLabel1.setBackground(new java.awt.Color(244, 235, 254));
         jLabel1.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -348,15 +345,16 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 50, 40));
 
         SearchDictionaryButton.setBackground(new java.awt.Color(145, 33, 143));
-        SearchDictionaryButton.setFont(new java.awt.Font("BM Hanna Pro", 0, 13)); // NOI18N
+        SearchDictionaryButton.setFont(new java.awt.Font("BM Hanna Pro", 1, 14)); // NOI18N
         SearchDictionaryButton.setForeground(java.awt.Color.white);
         SearchDictionaryButton.setText("Buscar Palabras");
+        SearchDictionaryButton.setPreferredSize(new java.awt.Dimension(139, 29));
         SearchDictionaryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchDictionaryButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(SearchDictionaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
+        jPanel1.add(SearchDictionaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 150, -1));
 
         AddToDictionaryButton.setBackground(new java.awt.Color(145, 33, 143));
         AddToDictionaryButton.setFont(new java.awt.Font("BM Hanna 11yrs Old", 1, 14)); // NOI18N
@@ -367,7 +365,7 @@ public class MainFrame extends javax.swing.JFrame {
                 AddToDictionaryButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(AddToDictionaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, -1, -1));
+        jPanel1.add(AddToDictionaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, -1, -1));
 
         InstructionsButton.setBackground(new java.awt.Color(111, 84, 174));
         InstructionsButton.setFont(new java.awt.Font("BM Hanna Pro", 1, 14)); // NOI18N
@@ -378,9 +376,9 @@ public class MainFrame extends javax.swing.JFrame {
                 InstructionsButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(InstructionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 120, -1));
+        jPanel1.add(InstructionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 180, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 380));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -407,6 +405,14 @@ public class MainFrame extends javax.swing.JFrame {
             return;
         }
 
+        // Check if the word only contains letters
+        if (!newWord.chars().allMatch(Character::isLetter)) {
+            // Show an error message if the word is invalid
+            JOptionPane.showMessageDialog(this, "La palabra debe solo contener letras", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         newWord = newWord.toUpperCase();
         int wordCount = DictionaryText.getText().split("<br>").length;
 
@@ -422,7 +428,46 @@ public class MainFrame extends javax.swing.JFrame {
     }// GEN-LAST:event_AddToDictionaryButtonActionPerformed
 
     private void SearchDictionaryButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SearchDictionaryButtonActionPerformed
-        searchDictionaryWords();
+        String selectedAlgorithm = (String) jComboBox1.getSelectedItem();
+        if (selectedAlgorithm == null) {
+            JOptionPane.showMessageDialog(this, "Please select a search algorithm.");
+            return;
+        }
+
+        String[] dictionaryEntries = DictionaryText.getText().substring(6).split("<br>");
+        String[] dictionaryWords = new String[dictionaryEntries.length];
+        int wordStart;
+        int wordEnd;
+        for (int i = 0; i < dictionaryEntries.length; i++) {
+            wordStart = dictionaryEntries[i].indexOf(">") + 1;
+            wordEnd = dictionaryEntries[i].indexOf("/") - 1;
+            dictionaryEntries[i] = dictionaryEntries[i].substring(wordStart, wordEnd);
+            wordStart = dictionaryEntries[i].indexOf(" ") + 1;
+            dictionaryWords[i] = dictionaryEntries[i].substring(wordStart);
+        }
+
+        boolean[] wordFound = new boolean[dictionaryWords.length];
+
+        startTimer();
+
+        for (int i = 0; i < dictionaryWords.length; i++) {
+            if (selectedAlgorithm == "BFS") {
+                wordFound[i] = foundStringBfs(dictionaryWords[i]);
+            } else {
+                wordFound[i] = foundStringDfs(dictionaryWords[i]);
+            }
+        }
+
+        stopTimer();
+
+        for (int i = 0; i < dictionaryEntries.length; i++) {
+            if (wordFound[i]) {
+                dictionaryEntries[i] = "<font color=green>" + dictionaryEntries[i] + "</font>";
+            } else {
+                dictionaryEntries[i] = "<font color=red>" + dictionaryEntries[i] + "</font>";
+            }
+        }
+        DictionaryText.setText("<html>" + String.join("<br>", dictionaryEntries) + "<br>");
     }// GEN-LAST:event_SearchDictionaryButtonActionPerformed
 
     private void LoadButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_LoadButtonActionPerformed
@@ -499,52 +544,6 @@ public class MainFrame extends javax.swing.JFrame {
         }
 
     }// GEN-LAST:event_FindWordButtonActionPerformed
-
-    private void searchDictionaryWords() {
-        String selectedAlgorithm = (String) jComboBox1.getSelectedItem();
-        if (selectedAlgorithm == null) {
-            JOptionPane.showMessageDialog(this, "Please select a search algorithm.");
-            return;
-        }
-
-        String[] dictionaryEntries = DictionaryText.getText().substring(6).split("<br>");
-        String[] dictionaryWords = new String[dictionaryEntries.length];
-        int wordStart;
-        int wordEnd;
-        for (int i = 0; i < dictionaryEntries.length; i++) {
-            wordStart = dictionaryEntries[i].indexOf(">") + 1;
-            wordEnd = dictionaryEntries[i].indexOf("/") - 1;
-            dictionaryEntries[i] = dictionaryEntries[i].substring(wordStart, wordEnd);
-            wordStart = dictionaryEntries[i].indexOf(" ") + 1;
-            dictionaryWords[i] = dictionaryEntries[i].substring(wordStart);
-        }
-
-        boolean[] wordFound = new boolean[dictionaryWords.length];
-
-        startTimer();
-
-        for (int i = 0; i < dictionaryWords.length; i++) {
-            if (selectedAlgorithm == "BFS") {
-                wordFound[i] = foundStringBfs(dictionaryWords[i]);
-            } else {
-                wordFound[i] = foundStringDfs(dictionaryWords[i]);
-            }
-        }
-        for (int i = 0; i < wordFound.length; i++) {
-            System.out.println(Boolean.toString(wordFound[i]));
-        }
-
-        stopTimer();
-
-        for (int i = 0; i < dictionaryEntries.length; i++) {
-            if (wordFound[i]) {
-                dictionaryEntries[i] = "<font color=green>" + dictionaryEntries[i] + "</font>";
-            } else {
-                dictionaryEntries[i] = "<font color=red>" + dictionaryEntries[i] + "</font>";
-            }
-        }
-        DictionaryText.setText("<html>" + String.join("<br>", dictionaryEntries) + "<br>");
-    }
 
     private void displayDictionaryWords(LinkedList<String> dictionaryWords) {
         String sb = "<html>";
@@ -810,6 +809,5 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
