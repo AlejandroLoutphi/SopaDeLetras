@@ -412,7 +412,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         // Add the new word to the DictionaryText
         DictionaryText.setText(DictionaryText.getText()
-                + "<br><font color=black>"
+                + "<font color=black>"
                 + Integer.toString(wordCount + 1)
                 + ". "
                 + newWord.toUpperCase()
@@ -543,7 +543,7 @@ public class MainFrame extends javax.swing.JFrame {
                 dictionaryEntries[i] = "<font color=red>" + dictionaryEntries[i] + "</font>";
             }
         }
-        DictionaryText.setText("<html>" + String.join("<br>", dictionaryEntries));
+        DictionaryText.setText("<html>" + String.join("<br>", dictionaryEntries) + "<br>");
     }
 
     private void displayDictionaryWords(LinkedList<String> dictionaryWords) {
