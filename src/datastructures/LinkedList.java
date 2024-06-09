@@ -101,7 +101,7 @@ public class LinkedList<E> {
      * Returns the element at index n.
      * 
      * @param n node index
-     * @return null of there's no element at index n. Otherwise, element at index n
+     * @return null if there's no element at index n. Otherwise, element at index n
      */
     public E get(int n) {
         if (this.isEmpty() || n < 0)
@@ -223,14 +223,20 @@ public class LinkedList<E> {
             return false;
         return this.getHead().setAsEnd(n, elt);
     }
-    // Method for getting an element in a specific index.
+
+    /**
+     * Returns the element at index n. Only works for LinkedList<String>.
+     * 
+     * @param n node index
+     * @return empty String if there's no element at index n. Otherwise, element at index n
+     * @throws Exception if used on something that isn't a LinkedList<String> 
+     */
     public String getStringIndex(int index) throws Exception {
         // WORK HERE
         LinkedListNode<E> pointer = getHead();
         int count = 0;
         while (pointer != null) {
             String prueba = (String) pointer.getElt();
-            // System.out.println("[ "+prueba + " ]");
             pointer = pointer.getNext();
             ;
             if (count == index) {
