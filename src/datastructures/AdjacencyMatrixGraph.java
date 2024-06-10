@@ -319,14 +319,29 @@ public class AdjacencyMatrixGraph<E> {
         return o;
     }
 
+    /**
+     * Returns the graph's edges in the form of an adjacency matrix.
+     *
+     * @return the graph's edges in the form of an adjacency matrix
+     */
     public boolean[][] getAdjacencyMatrix() {
         return adjacencyMatrix;
     }
 
+    /**
+     * Returns the elements housed in the graph's nodes.
+     *
+     * @return the elements housed in the graph's nodes
+     */
     public E[] getElts() {
         return elts;
     }
 
+    /**
+     * Returns the amount of nodes in the graph.
+     *
+     * @return the amount of nodes in the graph
+     */
     public int size() {
         return elts.length;
     }
