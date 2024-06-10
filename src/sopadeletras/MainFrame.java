@@ -206,7 +206,7 @@ public class MainFrame extends javax.swing.JFrame {
         TimeLabel.setForeground(new java.awt.Color(110, 0, 108));
         TimeLabel.setText("Tiempo: 0ms");
         TimeLabel.setOpaque(true);
-        jPanel1.add(TimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 210, 20));
+        jPanel1.add(TimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 190, 20));
 
         jLabel1.setBackground(new java.awt.Color(244, 235, 254));
         jLabel1.setFont(new java.awt.Font("October Condensed Devanagari", 1, 18)); // NOI18N
@@ -754,7 +754,6 @@ public class MainFrame extends javax.swing.JFrame {
             wordStart = dictionaryWords[i].indexOf(" ", 8) + 1;
             wordEnd = dictionaryWords[i].indexOf("/") - 1;
             content.append(dictionaryWords[i].substring(wordStart, wordEnd).trim().toUpperCase());
-            content.append(dictionaryWords[i], wordStart, wordEnd);
             content.append("\n");
         }
 
