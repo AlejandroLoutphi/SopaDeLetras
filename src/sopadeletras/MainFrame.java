@@ -512,8 +512,10 @@ public class MainFrame extends javax.swing.JFrame {
         try {
             LinkedList<String> dictionaryWords = readFile(selectedFile);
             displayDictionaryWords(dictionaryWords);
+            
 
-        } catch (Exception e) {
+            
+        }catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage(), "Error de Archivo",
                     JOptionPane.ERROR_MESSAGE);
@@ -765,6 +767,7 @@ public class MainFrame extends javax.swing.JFrame {
             wordStart = dictionaryWords[i].indexOf(" ", 8) + 1;
             wordEnd = dictionaryWords[i].indexOf("/") - 1;
             content.append(dictionaryWords[i].substring(wordStart, wordEnd).trim().toUpperCase());
+            content.append(dictionaryWords[i], wordStart, wordEnd).append(",");
             content.append("\n");
         }
 
@@ -794,46 +797,56 @@ public class MainFrame extends javax.swing.JFrame {
         boolean readingBoard = false;
         boolean readingDictionary = false;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
+    try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+        String line;
 
-            while ((line = br.readLine()) != null) {
-                // Remove commas and trim line
-                line = line.replaceAll(",", "").trim();
+        while ((line = br.readLine()) != null) {
+            // Remove commas and trim line
+            line = line.replaceAll(",", "").trim();
 
-                if (line.equals("tab")) {
-                    readingBoard = true;
-                    readingDictionary = false;
-                    continue;
-                } else if (line.equals("/tab")) {
-                    readingBoard = false;
-                    continue;
-                } else if (line.equals("dic")) {
-                    readingBoard = false;
-                    readingDictionary = true;
-                    continue;
-                } else if (line.equals("/dic")) {
-                    readingDictionary = false;
-                    continue;
-                }
+            if (line.equals("tab")) {
+                readingBoard = true;
+                readingDictionary = false;
+                continue;
+            } else if (line.equals("/tab")) {
+                readingBoard = false;
+                continue;
+            } else if (line.equals("dic")) {
+                readingBoard = false;
+                readingDictionary = true;
+                continue;
+            } else if (line.equals("/dic")) {
+                readingDictionary = false;
+                continue;
+            }
 
-                if (readingBoard) {
-                    boardLine = line;
-                } else if (readingDictionary) {
-                    if (!line.matches("^\\d+\\..*")) {
-                        dictionaryWords.add(line.toUpperCase());
-                    }
+            if (readingBoard) {
+                boardLine = line;
+                letterCount += line.length(); // Increment letter count
+            } else if (readingDictionary) {
+                if (!line.matches("^\\d+\\..*")) {
+                    dictionaryWords.add(line.toUpperCase());
                 }
             }
-            populateBoard(boardLine);
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error Leyendo Archivo: " + e.getMessage(), "Error",
-                    JOptionPane.ERROR_MESSAGE);
         }
 
-        return dictionaryWords;
+        // Validate letter count
+        if (letterCount != 16) {
+            JOptionPane.showMessageDialog(this, "El archivo no contiene exactamente 16 letras. Por favor, inténtelo de nuevo.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return null; // Return null if validation fails
+        }else{
+            populateBoard(boardLine);
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error Leyendo Archivo: " + e.getMessage(), "Error",
+                JOptionPane.ERROR_MESSAGE);
+        return null; // Return null in case of any exception
     }
+
+    return dictionaryWords;
+}
 
     /**
      * Populates the graph and the board with the characters of the passed-in
