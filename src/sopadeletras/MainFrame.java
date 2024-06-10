@@ -511,12 +511,12 @@ public class MainFrame extends javax.swing.JFrame {
         }
         try {
             LinkedList<String> dictionaryWords = readFile(selectedFile);
+            if (dictionaryWords == null) {
+            JOptionPane.showMessageDialog(this, "Error: Archivo Inválido", "Error de Archivo",
+                    JOptionPane.ERROR_MESSAGE);
+            }
             displayDictionaryWords(dictionaryWords);
-            
-
-            
         }catch (Exception e) {
-            e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage(), "Error de Archivo",
                     JOptionPane.ERROR_MESSAGE);
         }
@@ -547,7 +547,6 @@ public class MainFrame extends javax.swing.JFrame {
                     vertexOrEdgeId = Integer.toString(i) + "-" + Integer.toString(j);
                     vis.getNode(Integer.toString(i)).removeAttribute("ui.hide");
                     vis.getNode(Integer.toString(j)).removeAttribute("ui.hide");
-                    System.out.println(vertexOrEdgeId);
                     vis.addEdge(vertexOrEdgeId, Integer.toString(i), Integer.toString(j), true);
                 }
             }
@@ -777,8 +776,6 @@ public class MainFrame extends javax.swing.JFrame {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(content.toString());
         } catch (IOException e) {
-            // Handle the IOException
-            e.printStackTrace();
             // You can also show a message dialog to inform the user about the error
             JOptionPane.showMessageDialog(this, "Error Guardando Archivo: " + e.getMessage(), "Error",
                     JOptionPane.ERROR_MESSAGE);
@@ -799,6 +796,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
         String line;
+        int letterCount = 0;
 
         while ((line = br.readLine()) != null) {
             // Remove commas and trim line
@@ -824,6 +822,10 @@ public class MainFrame extends javax.swing.JFrame {
                 boardLine = line;
                 letterCount += line.length(); // Increment letter count
             } else if (readingDictionary) {
+                if (line.length() < 3 || !line.chars().allMatch(Character::isLetter)) {
+                    return null;
+                }
+
                 if (!line.matches("^\\d+\\..*")) {
                     dictionaryWords.add(line.toUpperCase());
                 }
@@ -839,7 +841,6 @@ public class MainFrame extends javax.swing.JFrame {
             populateBoard(boardLine);
         }
     } catch (IOException e) {
-        e.printStackTrace();
         JOptionPane.showMessageDialog(this, "Error Leyendo Archivo: " + e.getMessage(), "Error",
                 JOptionPane.ERROR_MESSAGE);
         return null; // Return null in case of any exception
