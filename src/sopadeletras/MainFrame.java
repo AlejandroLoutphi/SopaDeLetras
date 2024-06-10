@@ -199,7 +199,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("BM Hanna 11yrs Old", 1, 15)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(75, 37, 109));
         jLabel19.setText("Palabra :");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 70, 20));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 80, 20));
 
         TimeLabel.setBackground(new java.awt.Color(160, 158, 214));
         TimeLabel.setFont(new java.awt.Font("BM Hanna 11yrs Old", 1, 20)); // NOI18N
@@ -265,8 +265,7 @@ public class MainFrame extends javax.swing.JFrame {
         DictionaryText.setBackground(new java.awt.Color(244, 235, 254));
         DictionaryText.setForeground(new java.awt.Color(153, 153, 255));
         DictionaryText.setAutoscrolls(true);
-        DictionaryText.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED,
-                java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        DictionaryText.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         DictionaryText.setOpaque(true);
         DictionaryPane.setViewportView(DictionaryText);
 
@@ -744,17 +743,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void saveDictionaryToFile(File file) {
         StringBuilder content = new StringBuilder();
 
-        // Get the letters from the JLabels
-        content.append("tab\n");
-        JLabel[] labels = { jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9, jLabel10,
-                jLabel11, jLabel12, jLabel13, jLabel14, jLabel15, jLabel16 };
-        content.append(labels[0].getText());
-        for (int i = 1; i < labels.length; i++) {
-            content.append(",");
-            content.append(labels[i].getText());
-        }
-        content.append("\n/tab\n");
-
         // Append the dictionary words from the DictionaryText without numbering
         // between DIC and /DIC
         content.append("dic\n");
@@ -766,11 +754,22 @@ public class MainFrame extends javax.swing.JFrame {
             wordStart = dictionaryWords[i].indexOf(" ", 8) + 1;
             wordEnd = dictionaryWords[i].indexOf("/") - 1;
             content.append(dictionaryWords[i].substring(wordStart, wordEnd).trim().toUpperCase());
-            content.append(dictionaryWords[i], wordStart, wordEnd).append(",");
+            content.append(dictionaryWords[i], wordStart, wordEnd);
             content.append("\n");
         }
 
-        content.append("/dic");
+        content.append("/dic\n");
+
+        // Get the letters from the JLabels
+        content.append("tab\n");
+        JLabel[] labels = { jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9, jLabel10,
+                jLabel11, jLabel12, jLabel13, jLabel14, jLabel15, jLabel16 };
+        content.append(labels[0].getText());
+        for (int i = 1; i < labels.length; i++) {
+            content.append(",");
+            content.append(labels[i].getText());
+        }
+        content.append("\n/tab");
 
         // Write the combined content to the file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
