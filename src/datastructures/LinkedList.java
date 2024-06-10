@@ -225,11 +225,11 @@ public class LinkedList<E> {
     }
 
     /**
-     * Returns the element at index n. Only works for LinkedList<String>.
+     * Returns the element at index n. Only works for E = String.
      * 
-     * @param n node index
+     * @param index node index
      * @return empty String if there's no element at index n. Otherwise, element at index n
-     * @throws Exception if used on something that isn't a LinkedList<String> 
+     * @throws Exception if used on a LinkedList where E != String
      */
     public String getStringIndex(int index) throws Exception {
         // WORK HERE
