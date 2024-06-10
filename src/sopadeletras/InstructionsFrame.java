@@ -93,6 +93,9 @@ public class InstructionsFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Closes this window.
+     */
     private void CloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseButtonActionPerformed
         // TODO add your handling code here:
         if (evt.getSource() == CloseButton); {
